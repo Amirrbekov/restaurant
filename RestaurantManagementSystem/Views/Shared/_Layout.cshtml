@@ -1,0 +1,230 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+	<!-- Meta Tags -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+	<meta name="description" content="Multipages HTML5 Template">
+	<meta name="author" content="">
+
+	<!-- Page Title -->
+	<title>Hungrybuzz</title>
+
+	<!-- Favicon and touch Icons -->
+	<link href="~/assets/images/favicon.png" rel="shortcut icon" type="image/png">
+	<link href="~/assets/images/apple-touch-icon.html" rel="apple-touch-icon">
+	<link href="~/assets/images/apple-touch-icon-72x72.html" rel="apple-touch-icon" sizes="72x72">
+	<link href="~/assets/images/apple-touch-icon-114x114.html" rel="apple-touch-icon" sizes="114x114">
+	<link href="~/assets/images/apple-touch-icon-144x144.html" rel="apple-touch-icon" sizes="144x144">
+	@*Bootstrap i tags*@
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+	<!-- Lead Style -->
+	<link href="~/assets/css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body class="dark_bg">
+
+	<div id="preloader" class="loader_show">
+		<div class="loader-wrap">
+			<div class="loader">
+				<div class="loader-inner"></div>
+			</div>
+		</div>
+	</div>
+
+	<!-- pointer start -->
+	<div class="pointer bnz-pointer" id="bnz-pointer"></div>
+
+	<!-- Header 1 -->
+	<header class="header header_type1">
+		<div class="top_bar">
+			<div class="container-fluid">
+				<div class="top_bar_inner">
+
+					<div class="nav_more_info">
+						@await Component.InvokeAsync("ShoppingCart")
+					</div>
+
+					<div class="logo">
+						<a asp-area="Customer" asp-controller="Home" asp-action="Index"><img src="https://wpthemebooster.com/demo/themeforest/html/hungrybuzz/assets/images/logo.svg" alt="logo"></a>
+					</div>
+
+					<div class="mainnav">
+						<ul class="main_menu">
+							<li class="menu-item">
+								<a asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
+							</li>
+							<li class="menu-item">
+								<a asp-area="Customer" asp-controller="Home" asp-action="About">About</a>
+							</li>
+							<li class="menu-item">
+								<a asp-area="Customer" asp-controller="Home" asp-action="Menu">Menu</a>
+							</li>
+							<li class="menu-item logo-item">
+								<a asp-area="Customer" asp-controller="Home" asp-action="Index">
+									<img src="https://wpthemebooster.com/demo/themeforest/html/hungrybuzz/assets/images/logo.svg" alt="logo">
+								</a>
+							</li>
+							<li class="menu-item">
+								<a asp-area="Customer" asp-controller="Shop" asp-action="Index">Shop</a>
+							</li>
+							<li class="menu-item">
+								<a asp-area="Customer" asp-controller="Blog" asp-action="Index">Blog</a>
+							</li>
+							<li class="menu-item">
+								<a asp-area="Customer" asp-controller="Home" asp-action="Contact">Contact</a>
+							</li>
+							<li class="menu-item menu-item-has-children">
+								@if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Customer))
+								{
+									<a asp-area="Identity" asp-page="/Account/Manage/Index">
+										<i class="bi bi-person"></i> Profile
+									</a>
+								}
+								else
+								{
+									<a asp-area="Identity" asp-page="/Account/Login">
+										<i class="bi bi-person"></i> Profile
+									</a>
+								}
+								<partial name="_LoginPartial" />
+							</li>
+						</ul>
+					</div>
+
+					<div class="header_toggle d-xl-none">
+						<!-- mobile menu toggle button -->
+						<button class="ma5menu__toggle" type="button">
+							<span class="toggle_line"></span>
+							<span class="toggle_line"></span>
+							<span class="toggle_line"></span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+    @RenderBody()
+
+		<!-- Footer 1 -->
+		<footer class="footer">
+			<div class="footer_above">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-4 col-sm-6">
+							<div class="footer_widget news_widget">
+								<h5 class="widget_title">Latest News</h5>
+								<ul class="most_read">
+									<li class="most_read_item">
+										<div class="most_read_content">
+											<h6>August 06, 2022</h6>
+											<h5><a href="#">Bread & Jam Fusion</a></h5>
+										</div>
+									</li>
+									<li class="most_read_item">
+										<div class="most_read_content">
+											<h6>August 06, 2022</h6>
+											<h5><a href="#">How to start food Blogging</a></h5>
+										</div>
+									</li>
+									<li class="most_read_item">
+										<div class="most_read_content">
+											<h6>August 06, 2022</h6>
+											<h5><a href="#">15 Amazing Tips to keep food fresh</a></h5>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-lg-4 col-sm-6">
+							<div class="footer_widget center_widget">
+								<div class="logo_footer">
+									<a href="index.html">
+										<img src="https://wpthemebooster.com/demo/themeforest/html/hungrybuzz/assets/images/logo2.svg" alt="hungrybuzz">
+									</a>
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adipisc
+										do eiusmod tempor incididunt
+									</p>
+								</div>
+								<div class="footer_social">
+									<ul class="bottom_social">
+										<li class="facebook"><a href="#"><span>FB</span> Facebook</a></li>
+										<li class="instagram"><a href="#"><span>IN</span> Instagram</a></li>
+										<li class="youtube"><a href="#"><span>YT</span> YouTube</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-sm-6">
+							<div class="footer_widget widget_payment">
+								<h5 class="widget_title">Payment Procedure</h5>
+								<p>
+									Lorem ipsum dolor sit amet consectetur
+									mod tempor indidunt ut labore et dolore
+									magna aliqua.
+								</p>
+								<p>Mod tempor indidunt ut labore </p>
+
+								<div class="paymethod">
+									<a href="#"><img src="https://wpthemebooster.com/demo/themeforest/html/hungrybuzz/assets/images/payment1.svg" alt=""></a>
+									<a href="#"><img src="https://wpthemebooster.com/demo/themeforest/html/hungrybuzz/assets/images/payment2.svg" alt=""></a>
+									<a href="#"><img src="https://wpthemebooster.com/demo/themeforest/html/hungrybuzz/assets/images/payment3.svg" alt=""></a>
+									<a href="#"><img src="https://wpthemebooster.com/demo/themeforest/html/hungrybuzz/assets/images/payment4.svg" alt=""></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer_bottom">
+				<div class="container">
+					<div class="footer_bottom_inner">
+						<div class="copyright">
+							<p> &copy; All rights reserved to <a href="#">WPThemeBooster</a></p>
+						</div>
+						<div class="totop">
+							<a href="#"><i class="ion-ios-arrow-up"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<!-- All JavaScript Files -->
+		<script src="~/assets/js/jquery-3.5.1.min.js"></script>
+		<script src="~/assets/js/popper.min.js"></script>
+		<script src="~/assets/js/bootstrap.min.js"></script>
+
+		<script src="~/assets/plugins/menu/ma5-menu.min.js"></script>
+		<script src="~/assets/plugins/slick/slick.min.js"></script>
+		<script src="~/assets/plugins/fancybox/jquery.fancybox.min.js"></script>
+
+		<script src="~/assets/plugins/select2/select2.js"></script>
+		<script src="~/assets/plugins/isotope/isotope.pkgd.min.js"></script>
+		<script src="~/assets/plugins/isotope/imagesloaded.pkgd.min.js"></script>
+		<script src="~/assets/plugins/isotope/packery-mode.pkgd.js"></script>
+
+		<script src="~/assets/plugins/aos/aos.js"></script>
+		<script src="~/assets/plugins/jarallax/jarallax.min.js"></script>
+
+		<script src="~/assets/js/custom.js"></script>
+		<script>
+			$(window).resize(function () {
+				$('.slider_slick')[0].slick.refresh();
+			});
+		</script>
+		<script src="https://maps.google.com/maps/api/js?key=AIzaSyCUiaBC-cJ0wcEtqCUtoXF3I91o9wS42gQ"></script>
+		<script src="~/assets/js/map.js"></script>
+		@await RenderSectionAsync("Scripts", required: false)
+</body>
+
+<!-- Mirrored from wpthemebooster.com/demo/themeforest/html/hungrybuzz/dark/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Aug 2023 12:34:04 GMT -->
+</html>
+    

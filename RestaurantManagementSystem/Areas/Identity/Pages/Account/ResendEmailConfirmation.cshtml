@@ -1,0 +1,34 @@
+﻿@page
+@model ResendEmailConfirmationModel
+
+<div class="border-0 mt-4">
+    <div class="card-header m-lg-0 py-4">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="py-2 text-white">Resend email confirmation</h2>
+            </div>
+        </div>
+    </div>
+    <div class="p-4 ">
+        <div class="row">
+            <div class="col-md-12">
+                <form class="mx-auto col-10 col-md-8 col-lg-6" id="account" method="post">
+                    <h3 class="border-bottom pb-3 mb-4 text-secondary text-center">Enter your email.</h3>
+                    <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                    <div class="form_group mb-3">
+                        <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                        <label asp-for="Input.Email" class="m-sm-2 text-muted">Email</label>
+                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    </div>
+                    <div class="button_group">
+                        <input class="button w-100" type="submit" value="Resend" name="submit">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,42 @@
+﻿@page
+@model ExternalLoginModel
+
+<div class="border-0 mt-4 text-center">
+    <div class="card-header m-lg-0 py-4">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="py-2 text-white text-center">Register</h2>
+            </div>
+        </div>
+    </div>
+    <div class="p-4 ">
+        <div class="row">
+            <h2 id="external-login-title">Associate your @Model.ProviderDisplayName account.</h2>
+            <hr />
+            <p id="external-login-description" class="text-info">
+                You've successfully authenticated with <strong>@Model.ProviderDisplayName</strong>.
+                Please enter an email address for this site below and click the Register button to finish
+                logging in.
+            </p>
+            <div class="col-md-12">
+                <form class="mx-auto col-10 col-md-8 col-lg-6" asp-page-handler="Confirmation" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+                    <div class="form_group mb-3">
+                        <input asp-for="Input.Email" class="form-control" autocomplete="email" placeholder="Please enter your email." />
+                        <label asp-for="Input.Email" class="m-sm-2 text-muted"></label>
+                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="button_group">
+                        <input class="button w-100" type="submit" value="Register" name="submit">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

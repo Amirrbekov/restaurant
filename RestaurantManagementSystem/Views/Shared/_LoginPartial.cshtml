@@ -1,0 +1,32 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<ul class="sub-menu">
+@if (SignInManager.IsSignedIn(User))
+{
+    <li class="menu-item">
+        <p>@UserManager.GetUserName(User)</p>
+    </li>
+    <li class="menu-item">
+            <a id="manage" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                <i class="bi bi-person"></i> Manage User
+            </a>
+    </li>
+    <li class="menu-item">
+        <form id="logoutForm" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button id="logout" type="submit" class="button">Logout</button>
+        </form>
+    </li>
+}
+else
+{
+    <li class="menu-item">
+        <a id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+    </li>
+    <li class="menu-item">
+        <a id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+    </li>
+}
+</ul>

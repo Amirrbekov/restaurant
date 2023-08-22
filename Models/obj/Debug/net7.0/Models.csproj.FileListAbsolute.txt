@@ -1,0 +1,14 @@
+C:\Users\amirb\source\repos\RestaurantManagementSystem\Models\bin\Debug\net7.0\Models.deps.json
+C:\Users\amirb\source\repos\RestaurantManagementSystem\Models\bin\Debug\net7.0\Models.runtimeconfig.json
+C:\Users\amirb\source\repos\RestaurantManagementSystem\Models\bin\Debug\net7.0\Models.dll
+C:\Users\amirb\source\repos\RestaurantManagementSystem\Models\bin\Debug\net7.0\Models.pdb
+C:\Users\amirb\source\repos\RestaurantManagementSystem\Models\obj\Debug\net7.0\Models.csproj.AssemblyReference.cache
+C:\Users\amirb\source\repos\RestaurantManagementSystem\Models\obj\Debug\net7.0\Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\amirb\source\repos\RestaurantManagementSystem\Models\obj\Debug\net7.0\Models.AssemblyInfoInputs.cache
+C:\Users\amirb\source\repos\RestaurantManagementSystem\Models\obj\Debug\net7.0\Models.AssemblyInfo.cs
+C:\Users\amirb\source\repos\RestaurantManagementSystem\Models\obj\Debug\net7.0\Models.csproj.CoreCompileInputs.cache
+C:\Users\amirb\source\repos\RestaurantManagementSystem\Models\obj\Debug\net7.0\Models.dll
+C:\Users\amirb\source\repos\RestaurantManagementSystem\Models\obj\Debug\net7.0\refint\Models.dll
+C:\Users\amirb\source\repos\RestaurantManagementSystem\Models\obj\Debug\net7.0\Models.pdb
+C:\Users\amirb\source\repos\RestaurantManagementSystem\Models\obj\Debug\net7.0\Models.genruntimeconfig.cache
+C:\Users\amirb\source\repos\RestaurantManagementSystem\Models\obj\Debug\net7.0\ref\Models.dll

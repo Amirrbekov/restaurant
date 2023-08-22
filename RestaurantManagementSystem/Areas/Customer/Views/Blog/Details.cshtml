@@ -1,0 +1,145 @@
+﻿@model PostDetailViewModel
+
+<div class="page-header">
+	<div class="page-header-content bg_image_header jarallax">
+		<div class="container">
+			<h1 class="heading">Blog Details</h1>
+		</div>
+	</div>
+</div>
+
+<div class="main-wrapper">
+	<div class="container">
+		<div class="blog_details">
+			<div class="post_img">
+				<img src="@Model.Post.Image" alt="blog">
+			</div>
+			<div class="blog_details_inner">
+				<div class="post_content">
+					<div class="details_post_header">
+						<div class="calendar">@Model.Post.Created.Date</div>
+						<h3 class="post_title">@Model.Post.Title</h3>
+					</div>
+					<div class="fulltext first_para">
+						<p>
+							@Html.Raw(Model.Post.Body)
+						</p>
+					</div>
+					<div class="post_footer">
+						<div class="post_share">
+							<ul class="share_list">
+								<li>Share:</li>
+								<li data-aos="fade-up" data-aos-duration="1000"><a href="#"><i class="bi bi-facebook"></i></a></li>
+								<li data-aos="fade-up" data-aos-duration="2500"><a href="#"><i class="bi bi-instagram"></i></a></li>
+								<li data-aos="fade-up" data-aos-duration="3000"><a href="#"><i class="bi bi-pinterest"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-11">
+						<div class="comments-area">
+							<h3 class="comments-title">Comments</h3>
+							<ul class="comment-list">
+								@*@foreach (var item in Model.)
+								{
+									<li class="comment even thread-even depth-1">
+										<div class="commenter-block">
+											<div class="comment-content">
+												<div class="comment-author-name">@item.ApplicationUser.Name <span class="comment-reply"><a href="#" class="comment-reply-link">Reply <i class="ion-chevron-right"></i><i class="ion-chevron-right"></i></a></span></div>
+												<div class="comment-author-comment">
+													<p>@item.Text</p>
+												</div>
+												<time class="comment-date">@item.DatePosted</time>
+											</div>
+										</div>
+										@foreach (var con in Model)
+										{
+											<ul class="children">
+												<li class="comment even thread-even depth-2">
+													<div class="commenter-block">
+														<div class="comment-content">
+															<div class="comment-author-name">Patricia Doe <span class="comment-reply"><a href="#" class="comment-reply-link">Reply <i class="ion-chevron-right"></i><i class="ion-chevron-right"></i></a></span></div>
+															<div class="comment-author-comment">
+																<p>Lorem ipsum dolor sit amet, consectetur. Ut enim ad minima veniam quis nostrum exercitationem mosequatu autem.</p>
+															</div>
+															<time class="comment-date">August 29, 2022</time>
+														</div>
+													</div>
+												</li><!-- #comment-## -->
+											</ul><!-- .children -->
+										}
+										
+									</li><!-- #comment-## -->
+								}*@
+								
+							</ul>
+							<div class="comments-pagination">
+								<a class="page-numbers" href="#">1</a>
+								<span aria-current="page" class="page-numbers current">2</span>
+							</div>
+							@*<ul class="pagination">
+								@if (Model.PageNumber > 1)
+								{
+									<li>
+										<a class="disable" asp-action="Index" asp-controller="Blog"
+										   asp-route-search="@Model.Search" asp-route-pageNumber="@(Model.PageNumber - 1)"><i class="bi bi-arrow-left-short"></i></a>
+									</li>
+								}
+								@foreach (var item in Model.Pages)
+								{
+									if (item == -1)
+									{
+										<li>.....</li>
+									}
+									else
+									{
+										<li>
+											<a class="@(item == Model.PageNumber ? "page-number current" : "page-number")" asp-action="Index" asp-controller="Blog"
+											   asp-route-search="@Model.Search" asp-route-pageNumber="@item">@item</a>
+										</li>
+									}
+								}
+								@if (Model.NextPage)
+								{
+									<li>
+										<a class="disable" asp-action="Index" asp-controller="Blog"
+										   asp-route-search="@Model.Search" asp-route-pageNumber="@(Model.PageNumber + 1)"><i class="bi bi-arrow-right-short"></i></a>
+									</li>
+								}
+							</ul>*@
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-11">
+						<div class="comment-respond" data-aos="fade-up" data-aos-duration="1000">
+							<h3 class="comment-reply-title">Make A Comment</h3>
+							@*<form class="comment-form" asp-action="AddComment" method="post">
+								<input asp-for="CommentBlog.CommentBlogId" hidden />
+								<input asp-for="CommentBlog.PostId" hidden />
+								<p class="logged-in-as">Your email address will not be published</p>
+								<div class="form-container">
+									<div class="row">
+										<div class="col-md-12 col-lg-12">
+											<div class="form-group">
+												<textarea asp-for="CommentBlog.Text" name="text" class="form-control" placeholder="Text Here*" required></textarea>
+											</div>
+										</div>
+										<div class="col-md-12 col-lg-12">
+											<div class="button_group">
+												<input class="button" type="submit" value="Submit" name="submit">
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>*@
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

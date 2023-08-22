@@ -1,0 +1,88 @@
+﻿@model PostViewModel
+
+<!-- Page Header -->
+<div class="page-header">
+	<div class="page-header-content bg_image_header jarallax">
+		<div class="container">
+			<h1 class="heading">Blog</h1>
+		</div>
+	</div>
+</div>
+
+<div class="col-md-12 text-center">
+	<form asp-controller="Blog" asp-action="Index" method="get" class="form-group">
+		<input type="hidden" name="pageNumber" value="@Model.PageNumber" />
+		<input class="form-control col-md-3 mb-3 mt-4" style="display:inline-block" type="text" name="search" placeholder="Search Product" value="@Model.Search" />
+		<div class="button_group">
+			<button class="button">Search</button>
+		</div>
+	</form>
+</div>
+
+<div class="main-wrapper">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 col-md-12">
+				<div class="blog_standard">
+					@foreach (var item in Model.Posts)
+					{
+						<article class="blog_post">
+							<div class="post_img">
+								<img src="@item.Image" alt="blog">
+							</div>
+							<div class="post_content">
+								<div class="post_header">
+									<div class="metalist">
+										<span class="calendar"><a asp-action="Details" asp-route-id="@item.PostId">@item.Created.Date</a></span>
+									</div>
+									<h3 class="post_title">
+										<a asp-action="Details" asp-route-id="@item.PostId">@item.Title</a>
+									</h3>
+								</div>
+								<div class="post_intro">
+									<p>@Html.Raw(item.Body.Substring(0,100) + "...")</p>
+								</div>
+								<div class="post_footer">
+									<div class="read_more">
+										<a asp-action="Details" asp-route-id="@item.PostId">Continue Reading</a>
+									</div>
+								</div>
+							</div>
+						</article>
+					}
+				</div>
+
+				<ul class="pagination">
+					@if (Model.PageNumber > 1)
+					{
+						<li>
+							<a class="disable" asp-action="Index" asp-controller="Blog"
+							   asp-route-search="@Model.Search" asp-route-pageNumber="@(Model.PageNumber - 1)"><i class="bi bi-arrow-left-short"></i></a>
+						</li>
+					}
+					@foreach (var item in Model.Pages)
+					{
+						if (item == -1)
+						{
+							<li>.....</li>
+						}
+						else
+						{
+							<li>
+								<a class="@(item == Model.PageNumber ? "page-number current" : "page-number")" asp-action="Index" asp-controller="Blog"
+								   asp-route-search="@Model.Search" asp-route-pageNumber="@item">@item</a>
+							</li>
+						}
+					}
+					@if (Model.NextPage)
+					{
+						<li>
+							<a class="disable" asp-action="Index" asp-controller="Blog"
+							   asp-route-search="@Model.Search" asp-route-pageNumber="@(Model.PageNumber + 1)"><i class="bi bi-arrow-right-short"></i></a>
+						</li>
+					}
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

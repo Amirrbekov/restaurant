@@ -1,0 +1,45 @@
+﻿@page
+@model LoginWith2faModel
+
+<div class="border-0 mt-4 text-center">
+    <div class="card-header m-lg-0 py-4">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="py-2 text-white text-center">Two-factor authentication</h2>
+            </div>
+        </div>
+    </div>
+    <div class="p-4 ">
+        <div class="row">
+            <p>Your login is protected with an authenticator app. Enter your authenticator code below.</p>
+            <div class="col-md-12">
+                <form class="mx-auto col-10 col-md-8 col-lg-6" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                    <input asp-for="RememberMe" type="hidden" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                    <div class="form_group mb-3">
+                        <input asp-for="Input.TwoFactorCode" class="form-control" autocomplete="off" />
+                        <label asp-for="Input.TwoFactorCode" class="m-sm-2 text-muted"></label>
+                        <span asp-validation-for="Input.TwoFactorCode" class="text-danger"></span>
+                    </div>
+                    <div class="form_group mb-3">
+                        <label asp-for="Input.RememberMachine" class="m-sm-2 text-muted">
+                            <input asp-for="Input.RememberMachine" />
+                            @Html.DisplayNameFor(m => m.Input.RememberMachine)
+                        </label>
+                    </div>
+                    <div class="button_group">
+                        <input class="button w-100" type="submit" value="Log in" name="submit">
+                    </div>
+                </form>
+            </div>
+            <p>
+                Don't have access to your authenticator device? You can
+                <a id="recovery-code-login" asp-page="./LoginWithRecoveryCode" asp-route-returnUrl="@Model.ReturnUrl">log in with a recovery code</a>.
+            </p>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

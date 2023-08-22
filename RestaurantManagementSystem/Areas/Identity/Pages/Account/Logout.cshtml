@@ -1,0 +1,32 @@
+﻿@page
+@model LogoutModel
+
+<div class="border-0 mt-4 text-center">
+    <div class="card-header m-lg-0 py-4">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="py-2 text-white text-center">Log out</h2>
+            </div>
+        </div>
+    </div>
+    <div class="p-4 ">
+        <div class="row">
+            <div class="col-md-12">
+                @{
+                    if (User.Identity?.IsAuthenticated ?? false)
+                    {
+                        <form class="mx-auto col-10 col-md-8 col-lg-6" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                            <div class="button_group">
+                                <input class="button w-100" type="submit" value="Click here to Logout" name="submit">
+                            </div>
+                        </form>
+                    }
+                    else
+                    {
+                        <p>You have successfully logged out of the application.</p>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>

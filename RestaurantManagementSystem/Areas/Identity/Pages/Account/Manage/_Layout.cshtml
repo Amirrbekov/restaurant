@@ -1,0 +1,38 @@
+﻿@{
+    if (ViewData.TryGetValue("ParentLayout", out var parentLayout) && parentLayout !=  null)
+    {
+        Layout = parentLayout.ToString();
+    }
+    else
+    {
+        Layout = "/Views/Shared/_Layout.cshtml";
+    }
+}
+
+<div class="border-0 mt-4">
+    <div class="m-lg-0 py-4">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="py-2 text-white">Manage your account</h2>
+            </div>
+        </div>
+    </div>
+    <div class="p-4 ">
+        <div class="row d-flex">
+            <div class="col-md-12">
+                
+                <div class="col-md-3" style="display:inline-block">
+                    <h3 class="pb-3 mb-4 text-secondary">Change your account settings</h3>
+                    <partial name="_ManageNav" />
+                </div>
+                <div class="col-md-8" style="display:inline-block">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}

@@ -1,0 +1,210 @@
+﻿@model ShoppingCart 
+  
+<style>
+    .rating-stars {
+        direction: rtl; /* Reverse order for right-to-left languages */
+    }
+
+        .rating-stars input[type="radio"] {
+            display: none;
+        }
+
+        .rating-stars label {
+            display: inline-block;
+            font-size: 1.5em;
+            color: gray;
+            cursor: pointer;
+        }
+
+            .rating-stars label:hover,
+            .rating-stars label:hover ~ label,
+            .rating-stars input[type="radio"]:checked ~ label {
+                color: gold;
+            }
+</style>
+
+
+<form method="post">
+    <input hidden asp-for="ProductId" />
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="page-header-content bg_image_header jarallax">
+            <div class="container">
+                <h1 class="heading">Product</h1>
+            </div>
+        </div>
+    </div>
+    
+    <div class="main-wrapper">
+        <div class="product_view">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="product_left">
+                            <div class="product_zoom">
+                                <div class="product_zoom_container">
+                                    <div class="product_zoom_info selected">
+                                        <div class="product_image_zoom">
+                                            <img src="@Model.Product.Image" alt="img">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="product_right">
+                            <div class="product_info">
+                                <div class="product_title"><h4>@Model.Product.Name</h4></div>
+                                <form asp-controller="ShoppingCart" asp-action="SubmitReview" method="post">
+
+                                    <div class="product_rating">
+                                        <i class="bi bi-star"></i>
+                                        <i class="bi bi-star"></i>
+                                        <i class="bi bi-star"></i>
+                                        <i class="bi bi-star"></i>
+                                        <i class="bi bi-star"></i>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="product_price">
+                                <del>$105.00</del> <span class="product_per_price" data-content="95.00"></span> $<span class="product_total_price">95.00</span>
+                            </div>
+                            <div class="product_description">
+                                @Html.Raw(Model.Product.Description)
+                            </div>
+                            <div class="product_view_bottom">
+                                <div class="product_quantity">
+                                    <div class="product_quantity_inner">
+                                        <span class="product_quantity_subtract">
+                                            <a asp-controller="Cart" asp-action="minus" asp-route-cartId="@Model.ShoppingCartId" class="product_quantity_subtract">
+                                                <i class="bi bi-dash"></i>
+                                            </a>
+                                        </span>
+                                        <input asp-for="Count" type="number" value="1">
+                                        <span class="product_quantity_add">
+                                            <a asp-controller="Cart" asp-action="plus" asp-route-cartId="@Model.ShoppingCartId" class="product_quantity_subtract">
+                                                <i class="bi bi-plus"></i>
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+    
+                                <div class="button_group">
+                                    <button class="button" type="submit">Add to Cart</button>
+                                </div>
+                            </div>
+    
+                            <div class="product_meta">
+                                <ul>
+                                    <li><span>SKU:</span> @Model.Product.SKU</li>
+                                    <li><span>Category:</span> @Model.Product.Category.Name</li>
+                                </ul>
+                            </div>
+                            <div class="post_share">
+                                <ul class="share_list">
+                                    <li>Share:</li>
+                                    <li data-aos="fade-up" data-aos-duration="1000"><a href="#"><i class="bi bi-facebook"></i></a></li>
+                                    <li data-aos="fade-up" data-aos-duration="2500"><a href="#"><i class="bi bi-instagram"></i></a></li>
+                                    <li data-aos="fade-up" data-aos-duration="3000"><a href="#"><i class="bi bi-pinterest"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    
+        <div class="container">
+            <div class="single_tab section_sm">
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2">
+                        <ul class="single_tab_button_group">
+                            <li class="single_tab_button selected">
+                                <a class="selected" href="#">Description</a>
+                            </li>
+                            <li class="single_tab_button">
+                                <a href="#">Reviews (10)</a>
+                            </li>
+                        </ul>
+    
+                        <div class="single_tab_container">
+                            <div class="single_tab_info selected">
+                                <p>
+                                    @Html.Raw(Model.Product.Description)
+                                </p>
+                            </div>
+    
+                            <div class="single_tab_info">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit tempor incididunt ut labore et.ad minim veniam, quis nostrud exercitation
+                                    ullamcoab Lorem ipsum dolor sit amet, consectetur adipiscingincididunt ut labore et dolore magna aliqua. Ut enad minim
+                                    veniam, quis nostrud exercitation ullamco labaliquip ex ea commodo consequat. Penat.aliquip ex ea commodo .
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit tempor incididunt.
+                                </p>
+                            </div>
+    
+                            <div class="single_tab_info">
+                                <div class="review_sec">
+                                    <h6 class="review_title">1 review for <a asp-action="Details" asp-route-id="@Model.ProductId">@Model.Product.Name</a></h6>
+                                    <ul class="review_area">
+                                        <!-- First Review -->
+                                        <li class="blog_review_user">
+                                            <div class="reviewer_div">
+                                                <div class="reviewer">
+                                                    <img alt="img" src="../assets/images/blog/commenter1.png" class="avatar">
+                                                </div>
+                                                <div class="review_block">
+                                                    <div class="product_rating">
+                                                        <i class="ion-android-star"></i>
+                                                        <i class="ion-android-star"></i>
+                                                        <i class="ion-android-star"></i>
+                                                        <i class="ion-android-star"></i>
+                                                        <i class="ion-android-star-half"></i>
+                                                    </div>
+                                                    <h4 class="reviewer_name">Elezabeth Doe <span class="review_date">07/08/2022</span></h4>
+                                                    <p class="reviewer_review">
+                                                        Senectus et netus et malesuada. Nunc pulvinar sapien et ligula ullamcorper malesuada proin. Neque convallis a cras
+                                                        semper auctor. Libero id faucibus nisl tincidunt eget.
+                                                    </p>
+    
+                                                </div>
+                                            </div>
+                                        </li>
+    
+                                        <!-- Second Review -->
+                                        <li class="blog_review_user">
+                                            <div class="reviewer_div">
+                                                <div class="reviewer">
+                                                    <img alt="img" src="../assets/images/blog/commenter2.png" class="avatar">
+                                                </div>
+                                                <div class="review_block">
+                                                    <div class="product_rating">
+                                                        <i class="ion-android-star"></i>
+                                                        <i class="ion-android-star"></i>
+                                                        <i class="ion-android-star"></i>
+                                                        <i class="ion-android-star-half"></i>
+                                                        <i class="ion-android-star-outline"></i>
+                                                    </div>
+                                                    <h4 class="reviewer_name">Jennifer Page <span class="review_date">29/07/2022</span></h4>
+                                                    <p class="reviewer_review">As the world continues to fight COVID-19 some property owners are searching for way they can improve the security of their buildings.</p>
+    
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="reviews-pagination">
+                                        <span aria-current="page" class="page-numbers current">1</span>
+                                        <a class="page-numbers" href="#">2</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+

@@ -1,0 +1,90 @@
+﻿@model ShoppingCartViewModel
+
+<!-- Page Header -->
+<div class="page-header">
+    <div class="page-header-content bg_image_header jarallax">
+        <div class="container">
+            <h1 class="heading">Your Cart</h1>
+        </div>
+    </div>
+</div>
+
+<div class="main-wrapper">
+    <div class="shopping_cart dark_cart">
+        <div class="container">
+            <table class="cart_table">
+                <tr class="cart_header">
+                    <th class="cart_header_removal"></th>
+                    <th class="cart_header_title">Product</th>
+                    <th class="cart_header_price">Price</th>
+                    <th class="cart_header_quantity">Quantity</th>
+                    <th class="cart_header_total">Total</th>
+                </tr>
+                @foreach (var item in Model.ShoppingCartList)
+                {
+                    <tr class="cart_content">
+                        <td class="cart_removal">
+                            <a asp-action="remove" asp-route-cartId="@item.ShoppingCartId">
+                                <i class="bi bi-x"></i>
+                            </a>
+                        </td>
+                        <td class="cart_title"><span class="cart_image"><img src="@item.Product.Image" alt="" /></span> @item.Product.Name</td>
+                        <td class="cart_price">@item.Product.Price.ToString("c")</td>
+                        <td class="cart_quantity">
+                            <div class="product_view_bottom">
+                                <div class="product_quantity">
+                                    <div class="product_quantity_inner">
+                                        <span class="product_quantity_add">
+                                            <a asp-action="minus" asp-route-cartId="@item.ShoppingCartId" class="product_quantity_subtract">
+                                                <i class="bi bi-dash"></i>
+                                            </a>
+                                        </span>
+                                        <input asp-for="@item.Count" value="@item.Count">
+                                        <span class="product_quantity_subtract">
+                                            <a asp-action="plus" asp-route-cartId="@item.ShoppingCartId" class="product_quantity_subtract">
+                                                <i class="bi bi-plus"></i>
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="cart_total">@((item.Product.Price * item.Count).ToString("c"))</td>
+                    </tr>
+                    
+                        
+                        
+                    
+                }
+            </table>
+            <div class="couponcart">
+                <form class="couponform" action="https://wpthemebooster.com/demo/themeforest/html/hungrybuzz/dark/coupon.php" method="POST">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="coupon" placeholder="Coupon Code">
+                    </div>
+                    <div class="button_group">
+                        <input class="button" type="submit" value="Apply Coupon" name="submit">
+                    </div>
+                </form>
+                <div class="cartupdate">
+                    <div class="button_group">
+                        <a asp-area="Customer" asp-controller="Home" asp-action="Shop" class="button">Update Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class="cart_grand_total">
+                <h3 class="grand_title">Cart Total</h3>
+                <ul>
+                    @foreach (var item in Model.ShoppingCartList)
+                    {
+                        <li><span class="cost_per">@item.Product.Name</span> <small>Quantity: @item.Count</small> <span class="value">@((item.Product.Price * @item.Count).ToString("c"))</span></li>
+                    }
+                    <li class="totalvalue"><span class="cost_per">Total</span> <span class="value">@Model.OrderHeader.OrderTotal.ToString("c")</span></li>
+                </ul>
+                <div class="button_group">
+                    <a asp-action="Summary" class="button">Proceed To Checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
