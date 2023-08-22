@@ -45,7 +45,37 @@
                                 <div class="product_zoom_container">
                                     <div class="product_zoom_info selected">
                                         <div class="product_image_zoom">
-                                            <img src="@Model.Product.Image" alt="img">
+                                            @if (Model.Product.ProductImages != null && Model.Product.ProductImages.Count() > 0)
+                                            {
+                                                <div id="carouselExampleIndicators" class="carousel slide">
+                                                    <div class="carousel-indicators">
+                                                        @foreach (var imageWithIndex in Model.Product.ProductImages.Select((image,index) => new { Image = image, Index = index }))
+                                                        {
+                                                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="@imageWithIndex.Index" class="@(imageWithIndex.Index == 0? "active" : "")" aria-current="true" aria-label="Slide 1"></button>
+                                                        }
+                                                    </div>
+                                                    <div class="carousel-inner">
+                                                        @foreach (var imageWithIndex in Model.Product.ProductImages.Select((image,index) => new { Image = image, Index = index }))
+                                                        {
+                                                            <div class="@(imageWithIndex.Index == 0? "carousel-item active" : "carousel-item")">
+                                                                <img src="@imageWithIndex.Image.ImageUrl" class="d-block w-100" alt="...">
+                                                            </div>
+                                                        }
+                                                    </div>
+                                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                        <span class="visually-hidden">Previous</span>
+                                                    </button>
+                                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                        <span class="visually-hidden">Next</span>
+                                                    </button>
+                                                </div>
+                                            }
+
+                                            
+
+                                            @*<img src="@Model.Product.Image" alt="img">*@
                                         </div>
                                     </div>
                                 </div>
@@ -56,16 +86,6 @@
                         <div class="product_right">
                             <div class="product_info">
                                 <div class="product_title"><h4>@Model.Product.Name</h4></div>
-                                <form asp-controller="ShoppingCart" asp-action="SubmitReview" method="post">
-
-                                    <div class="product_rating">
-                                        <i class="bi bi-star"></i>
-                                        <i class="bi bi-star"></i>
-                                        <i class="bi bi-star"></i>
-                                        <i class="bi bi-star"></i>
-                                        <i class="bi bi-star"></i>
-                                    </div>
-                                </form>
                             </div>
                             <div class="product_price">
                                 <del>$105.00</del> <span class="product_per_price" data-content="95.00"></span> $<span class="product_total_price">95.00</span>
@@ -77,13 +97,13 @@
                                 <div class="product_quantity">
                                     <div class="product_quantity_inner">
                                         <span class="product_quantity_subtract">
-                                            <a asp-controller="Cart" asp-action="minus" asp-route-cartId="@Model.ShoppingCartId" class="product_quantity_subtract">
+                                            <a asp-controller="Cart" asp-action="Minus" name="cartId" asp-route-cartId="@Model.ShoppingCartId" class="product_quantity_subtract">
                                                 <i class="bi bi-dash"></i>
                                             </a>
                                         </span>
                                         <input asp-for="Count" type="number" value="1">
                                         <span class="product_quantity_add">
-                                            <a asp-controller="Cart" asp-action="plus" asp-route-cartId="@Model.ShoppingCartId" class="product_quantity_subtract">
+                                            <a asp-controller="Cart" asp-action="Plus" asp-route-cartId="@Model.ShoppingCartId" class="product_quantity_subtract">
                                                 <i class="bi bi-plus"></i>
                                             </a>
                                         </span>
@@ -108,97 +128,6 @@
                                     <li data-aos="fade-up" data-aos-duration="2500"><a href="#"><i class="bi bi-instagram"></i></a></li>
                                     <li data-aos="fade-up" data-aos-duration="3000"><a href="#"><i class="bi bi-pinterest"></i></a></li>
                                 </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-    
-        <div class="container">
-            <div class="single_tab section_sm">
-                <div class="row">
-                    <div class="col-lg-8 offset-lg-2">
-                        <ul class="single_tab_button_group">
-                            <li class="single_tab_button selected">
-                                <a class="selected" href="#">Description</a>
-                            </li>
-                            <li class="single_tab_button">
-                                <a href="#">Reviews (10)</a>
-                            </li>
-                        </ul>
-    
-                        <div class="single_tab_container">
-                            <div class="single_tab_info selected">
-                                <p>
-                                    @Html.Raw(Model.Product.Description)
-                                </p>
-                            </div>
-    
-                            <div class="single_tab_info">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit tempor incididunt ut labore et.ad minim veniam, quis nostrud exercitation
-                                    ullamcoab Lorem ipsum dolor sit amet, consectetur adipiscingincididunt ut labore et dolore magna aliqua. Ut enad minim
-                                    veniam, quis nostrud exercitation ullamco labaliquip ex ea commodo consequat. Penat.aliquip ex ea commodo .
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit tempor incididunt.
-                                </p>
-                            </div>
-    
-                            <div class="single_tab_info">
-                                <div class="review_sec">
-                                    <h6 class="review_title">1 review for <a asp-action="Details" asp-route-id="@Model.ProductId">@Model.Product.Name</a></h6>
-                                    <ul class="review_area">
-                                        <!-- First Review -->
-                                        <li class="blog_review_user">
-                                            <div class="reviewer_div">
-                                                <div class="reviewer">
-                                                    <img alt="img" src="../assets/images/blog/commenter1.png" class="avatar">
-                                                </div>
-                                                <div class="review_block">
-                                                    <div class="product_rating">
-                                                        <i class="ion-android-star"></i>
-                                                        <i class="ion-android-star"></i>
-                                                        <i class="ion-android-star"></i>
-                                                        <i class="ion-android-star"></i>
-                                                        <i class="ion-android-star-half"></i>
-                                                    </div>
-                                                    <h4 class="reviewer_name">Elezabeth Doe <span class="review_date">07/08/2022</span></h4>
-                                                    <p class="reviewer_review">
-                                                        Senectus et netus et malesuada. Nunc pulvinar sapien et ligula ullamcorper malesuada proin. Neque convallis a cras
-                                                        semper auctor. Libero id faucibus nisl tincidunt eget.
-                                                    </p>
-    
-                                                </div>
-                                            </div>
-                                        </li>
-    
-                                        <!-- Second Review -->
-                                        <li class="blog_review_user">
-                                            <div class="reviewer_div">
-                                                <div class="reviewer">
-                                                    <img alt="img" src="../assets/images/blog/commenter2.png" class="avatar">
-                                                </div>
-                                                <div class="review_block">
-                                                    <div class="product_rating">
-                                                        <i class="ion-android-star"></i>
-                                                        <i class="ion-android-star"></i>
-                                                        <i class="ion-android-star"></i>
-                                                        <i class="ion-android-star-half"></i>
-                                                        <i class="ion-android-star-outline"></i>
-                                                    </div>
-                                                    <h4 class="reviewer_name">Jennifer Page <span class="review_date">29/07/2022</span></h4>
-                                                    <p class="reviewer_review">As the world continues to fight COVID-19 some property owners are searching for way they can improve the security of their buildings.</p>
-    
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <div class="reviews-pagination">
-                                        <span aria-current="page" class="page-numbers current">1</span>
-                                        <a class="page-numbers" href="#">2</a>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>

@@ -470,10 +470,6 @@ namespace DataAccess.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Image")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -497,7 +493,6 @@ namespace DataAccess.Migrations
                             ProductId = 1,
                             CategoryId = 4,
                             Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                            Image = "",
                             Name = "Cocoa Brownies",
                             Price = 95.0,
                             SKU = "012"
@@ -507,7 +502,6 @@ namespace DataAccess.Migrations
                             ProductId = 3,
                             CategoryId = 2,
                             Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                            Image = "",
                             Name = "Sausage Assortment",
                             Price = 14.0,
                             SKU = "013"
@@ -517,7 +511,6 @@ namespace DataAccess.Migrations
                             ProductId = 4,
                             CategoryId = 3,
                             Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                            Image = "",
                             Name = "Caesar With Chicken",
                             Price = 11.0,
                             SKU = "Non"
@@ -527,7 +520,6 @@ namespace DataAccess.Migrations
                             ProductId = 5,
                             CategoryId = 2,
                             Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                            Image = "",
                             Name = "Steak With Garnish",
                             Price = 28.0,
                             SKU = "Non"
@@ -537,7 +529,6 @@ namespace DataAccess.Migrations
                             ProductId = 6,
                             CategoryId = 1,
                             Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                            Image = "",
                             Name = "Club Sandwich",
                             Price = 9.5,
                             SKU = "Non"
@@ -547,7 +538,6 @@ namespace DataAccess.Migrations
                             ProductId = 7,
                             CategoryId = 4,
                             Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                            Image = "",
                             Name = "Panne Arabbiata",
                             Price = 9.0,
                             SKU = "Non"
@@ -557,11 +547,32 @@ namespace DataAccess.Migrations
                             ProductId = 8,
                             CategoryId = 5,
                             Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                            Image = "",
                             Name = "Kanafeh",
                             Price = 9.0,
                             SKU = "Non"
                         });
+                });
+
+            modelBuilder.Entity("Models.ProductImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductImages");
                 });
 
             modelBuilder.Entity("Models.ShoppingCart", b =>
@@ -599,7 +610,6 @@ namespace DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("CompanyId")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -717,6 +727,17 @@ namespace DataAccess.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("Models.ProductImage", b =>
+                {
+                    b.HasOne("Models.Product", "Product")
+                        .WithMany("ProductImages")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("Models.ShoppingCart", b =>
                 {
                     b.HasOne("Models.ApplicationUser", "ApplicationUser")
@@ -740,11 +761,14 @@ namespace DataAccess.Migrations
                 {
                     b.HasOne("Models.Company", "Company")
                         .WithMany()
-                        .HasForeignKey("CompanyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CompanyId");
 
                     b.Navigation("Company");
+                });
+
+            modelBuilder.Entity("Models.Product", b =>
+                {
+                    b.Navigation("ProductImages");
                 });
 #pragma warning restore 612, 618
         }

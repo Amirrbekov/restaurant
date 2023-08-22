@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "jYxISYkIoJR5hCBuDNypWnHz5BoUyC+lwwUhq2zGrBY=",
+  "Hash": "ATlS/0fE1R2M/DiCmvoIASRyDGOtcG92Y43B/sQzLco=",
   "Source": "RestaurantManagementSystem",
   "BasePath": "_content/RestaurantManagementSystem",
   "Mode": "Default",
@@ -36635,6 +36635,23 @@
       "OriginalItemSpec": "wwwroot\\images\\post\\4f3aa730-4650-4419-8ee7-760bf789c8b7.jpg"
     },
     {
+      "Identity": "C:\\Users\\amirb\\source\\repos\\RestaurantManagementSystem\\RestaurantManagementSystem\\wwwroot\\images\\post\\6797ed2a-fbbc-4cc1-aa07-d1ecda376b4e.jpg",
+      "SourceId": "RestaurantManagementSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\amirb\\source\\repos\\RestaurantManagementSystem\\RestaurantManagementSystem\\wwwroot\\",
+      "BasePath": "_content/RestaurantManagementSystem",
+      "RelativePath": "images/post/6797ed2a-fbbc-4cc1-aa07-d1ecda376b4e.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\post\\6797ed2a-fbbc-4cc1-aa07-d1ecda376b4e.jpg"
+    },
+    {
       "Identity": "C:\\Users\\amirb\\source\\repos\\RestaurantManagementSystem\\RestaurantManagementSystem\\wwwroot\\images\\post\\b9f077f9-844b-4611-9b35-ca00ec56f25f.jpg",
       "SourceId": "RestaurantManagementSystem",
       "SourceType": "Discovered",
@@ -36684,6 +36701,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\post\\fcc797a0-ef43-4e69-b790-219ae6c4ebed.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\amirb\\source\\repos\\RestaurantManagementSystem\\RestaurantManagementSystem\\wwwroot\\images\\products\\product-8\\223280ec-71af-4efb-9362-130cf8db857e.jpg",
+      "SourceId": "RestaurantManagementSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\amirb\\source\\repos\\RestaurantManagementSystem\\RestaurantManagementSystem\\wwwroot\\",
+      "BasePath": "_content/RestaurantManagementSystem",
+      "RelativePath": "images/products/product-8/223280ec-71af-4efb-9362-130cf8db857e.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\products\\product-8\\223280ec-71af-4efb-9362-130cf8db857e.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\amirb\\source\\repos\\RestaurantManagementSystem\\RestaurantManagementSystem\\wwwroot\\images\\products\\product-8\\9cc1b548-ff89-4392-a21a-0519e4c62931.jpg",
+      "SourceId": "RestaurantManagementSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\amirb\\source\\repos\\RestaurantManagementSystem\\RestaurantManagementSystem\\wwwroot\\",
+      "BasePath": "_content/RestaurantManagementSystem",
+      "RelativePath": "images/products/product-8/9cc1b548-ff89-4392-a21a-0519e4c62931.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\products\\product-8\\9cc1b548-ff89-4392-a21a-0519e4c62931.jpg"
     },
     {
       "Identity": "C:\\Users\\amirb\\source\\repos\\RestaurantManagementSystem\\RestaurantManagementSystem\\wwwroot\\js\\company.js",
@@ -36769,6 +36820,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\qr.js"
+    },
+    {
+      "Identity": "C:\\Users\\amirb\\source\\repos\\RestaurantManagementSystem\\RestaurantManagementSystem\\wwwroot\\js\\user.js",
+      "SourceId": "RestaurantManagementSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\amirb\\source\\repos\\RestaurantManagementSystem\\RestaurantManagementSystem\\wwwroot\\",
+      "BasePath": "_content/RestaurantManagementSystem",
+      "RelativePath": "js/user.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\user.js"
     },
     {
       "Identity": "C:\\Users\\amirb\\source\\repos\\RestaurantManagementSystem\\RestaurantManagementSystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",

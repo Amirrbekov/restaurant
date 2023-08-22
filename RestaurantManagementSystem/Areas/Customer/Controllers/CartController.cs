@@ -33,8 +33,11 @@ public class CartController : Controller
             OrderHeader = new()
         };
 
+        IEnumerable<ProductImage> productImages = _unitOfWork.ProductImage.GetAll();
+
         foreach (var cart in ShoppingCartViewModel.ShoppingCartList)
         {
+            cart.Product.ProductImages = productImages.Where(u => u.ProductId == cart.Product.ProductId).ToList();
             cart.Price = GetPriceBasedOnQuantity(cart);
             ShoppingCartViewModel.OrderHeader.OrderTotal += (cart.Price * cart.Count);
         }
@@ -193,7 +196,7 @@ public class CartController : Controller
 
     public IActionResult Plus(int cartId)
     {
-        var cartFromDb = _unitOfWork.ShoppingCart.Get(u => u.ShoppingCartId == cartId);
+        var cartFromDb = _unitOfWork.ShoppingCart.Get(u => u.ShoppingCartId == cartId, tracked: true);
         cartFromDb.Count += 1;
         _unitOfWork.ShoppingCart.Update(cartFromDb);
         _unitOfWork.Save();

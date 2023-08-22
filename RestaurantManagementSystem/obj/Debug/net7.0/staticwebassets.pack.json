@@ -8373,6 +8373,10 @@
       "PackagePath": "staticwebassets\\images\\post\\4f3aa730-4650-4419-8ee7-760bf789c8b7.jpg"
     },
     {
+      "Id": "C:\\Users\\amirb\\source\\repos\\RestaurantManagementSystem\\RestaurantManagementSystem\\wwwroot\\images\\post\\6797ed2a-fbbc-4cc1-aa07-d1ecda376b4e.jpg",
+      "PackagePath": "staticwebassets\\images\\post\\6797ed2a-fbbc-4cc1-aa07-d1ecda376b4e.jpg"
+    },
+    {
       "Id": "C:\\Users\\amirb\\source\\repos\\RestaurantManagementSystem\\RestaurantManagementSystem\\wwwroot\\images\\post\\b9f077f9-844b-4611-9b35-ca00ec56f25f.jpg",
       "PackagePath": "staticwebassets\\images\\post\\b9f077f9-844b-4611-9b35-ca00ec56f25f.jpg"
     },
@@ -8383,6 +8387,14 @@
     {
       "Id": "C:\\Users\\amirb\\source\\repos\\RestaurantManagementSystem\\RestaurantManagementSystem\\wwwroot\\images\\post\\fcc797a0-ef43-4e69-b790-219ae6c4ebed.jpg",
       "PackagePath": "staticwebassets\\images\\post\\fcc797a0-ef43-4e69-b790-219ae6c4ebed.jpg"
+    },
+    {
+      "Id": "C:\\Users\\amirb\\source\\repos\\RestaurantManagementSystem\\RestaurantManagementSystem\\wwwroot\\images\\products\\product-8\\223280ec-71af-4efb-9362-130cf8db857e.jpg",
+      "PackagePath": "staticwebassets\\images\\products\\product-8\\223280ec-71af-4efb-9362-130cf8db857e.jpg"
+    },
+    {
+      "Id": "C:\\Users\\amirb\\source\\repos\\RestaurantManagementSystem\\RestaurantManagementSystem\\wwwroot\\images\\products\\product-8\\9cc1b548-ff89-4392-a21a-0519e4c62931.jpg",
+      "PackagePath": "staticwebassets\\images\\products\\product-8\\9cc1b548-ff89-4392-a21a-0519e4c62931.jpg"
     },
     {
       "Id": "C:\\Users\\amirb\\source\\repos\\RestaurantManagementSystem\\RestaurantManagementSystem\\wwwroot\\js\\company.js",
@@ -8403,6 +8415,10 @@
     {
       "Id": "C:\\Users\\amirb\\source\\repos\\RestaurantManagementSystem\\RestaurantManagementSystem\\wwwroot\\js\\qr.js",
       "PackagePath": "staticwebassets\\js\\qr.js"
+    },
+    {
+      "Id": "C:\\Users\\amirb\\source\\repos\\RestaurantManagementSystem\\RestaurantManagementSystem\\wwwroot\\js\\user.js",
+      "PackagePath": "staticwebassets\\js\\user.js"
     },
     {
       "Id": "C:\\Users\\amirb\\source\\repos\\RestaurantManagementSystem\\RestaurantManagementSystem\\wwwroot\\lib\\bootstrap\\LICENSE",

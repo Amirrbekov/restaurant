@@ -26,10 +26,12 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
 
     public DbSet<Post> Posts { get; set; }
 
-	//Comment
+    //Comment
 
+    // Image
+    public DbSet<ProductImage> ProductImages { get; set; }
 
-	protected override void OnModelCreating(ModelBuilder modelBuilder)
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
 
@@ -74,7 +76,6 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
                         ProductId = 1,
                         Name = "Cocoa Brownies",
                         Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                        Image = "",
                         Price = 95,
                         SKU = "012",
                         CategoryId = 4
@@ -84,7 +85,6 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
                         ProductId = 3,
                         Name = "Sausage Assortment",
                         Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                        Image = "",
                         Price = 14,
                         SKU = "013",
                         CategoryId = 2
@@ -94,7 +94,6 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
                         ProductId = 4,
                         Name = "Caesar With Chicken",
                         Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                        Image = "",
                         Price = 11,
                         SKU = "Non",
                         CategoryId = 3
@@ -104,7 +103,6 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
                         ProductId = 5,
                         Name = "Steak With Garnish",
                         Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                        Image = "",
                         Price = 28,
                         SKU = "Non",
                         CategoryId = 2
@@ -114,7 +112,6 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
                         ProductId = 6,
                         Name = "Club Sandwich",
                         Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                        Image = "",
                         Price = 9.5,
                         SKU = "Non",
                         CategoryId = 1
@@ -124,7 +121,6 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
                         ProductId = 7,
                         Name = "Panne Arabbiata",
                         Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                        Image = "",
                         Price = 9,
                         SKU = "Non",
                         CategoryId = 4
@@ -134,7 +130,6 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
                         ProductId = 8,
                         Name = "Kanafeh",
                         Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                        Image = "",
                         Price = 9,
                         SKU = "Non",
                         CategoryId = 5

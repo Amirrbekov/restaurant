@@ -78,10 +78,11 @@ public class ProductRepository : Repository<Product>, IProductRepository
             objFromDb.SKU = obj.SKU;
             objFromDb.Price = obj.Price;
             objFromDb.CategoryId = obj.CategoryId;
-            if (obj.Image != null)
-            {
-                objFromDb.Image = obj.Image;
-            }
+            objFromDb.ProductImages = obj.ProductImages;
+            //if (obj.Image != null)
+            //{
+            //    objFromDb.Image = obj.Image;
+            //}
         }
     }
 }

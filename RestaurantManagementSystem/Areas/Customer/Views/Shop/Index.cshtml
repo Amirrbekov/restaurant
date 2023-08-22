@@ -31,7 +31,15 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="product_item">
                                 <div class="product_imagebox">
-                                    <a asp-action="Details" asp-route-id="@product.ProductId"><img class="primary_img" src="@product.Image" alt="img"></a>
+                                    @if (product.ProductImages != null && product.ProductImages.Count() > 0)
+                                    {
+                                        <a asp-action="Details" asp-route-id="@product.ProductId"><img class="primary_img" src="@product.ProductImages.FirstOrDefault().ImageUrl" alt="img"></a>
+                                    }
+                                    else
+                                    {
+                                        <a asp-action="Details" asp-route-id="@product.ProductId"><img class="primary_img" src="https://placehold.co/500x600/png" alt="img"></a>
+                                    }
+
                                 </div>
                                 <div class="label_text">
                                     <h5 class="product_item_name"><a asp-action="Details" asp-route-id="@product.ProductId">@product.Name</a></h5>

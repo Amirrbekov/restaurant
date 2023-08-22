@@ -29,7 +29,7 @@ public class ShopController : Controller
 	{
 		ShoppingCart cart = new()
 		{
-			Product = _unitOfWork.Product.Get(u => u.ProductId == id, includeProperties: "Category"),
+			Product = _unitOfWork.Product.Get(u => u.ProductId == id, includeProperties: "Category,ProductImages"),
 			Count = 1,
 			ProductId = id
 		};

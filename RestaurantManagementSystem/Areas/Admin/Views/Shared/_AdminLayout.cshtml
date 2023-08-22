@@ -101,6 +101,21 @@
             </li>
 
             <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                User Management
+            </div>
+
+            <li class="nav-item active">
+                <a asp-controller="User" asp-action="Index" class="nav-link">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Users</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block" />
 
             <!-- Sidebar Toggler (Sidebar) -->
@@ -386,6 +401,11 @@
 
     <!-- Page level plugins -->
     <script src="~/admin/vendor/chart.js/Chart.min.js"></script>
+
+    @*Toastr Notif*@
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
     <!-- Page level custom scripts -->
     <script src="~/admin/js/demo/chart-area-demo.js"></script>

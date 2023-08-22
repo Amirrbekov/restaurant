@@ -19,9 +19,12 @@ public class UnitOfWork : IUnitOfWork
     //Blog
     public IPosttRepository Post { get; private set; }
 
-	//Comment
+    //Comment
 
-	public UnitOfWork(ApplicationDbContext db)
+    //Image
+    public IProductImageRepository ProductImage { get; private set; }
+
+    public UnitOfWork(ApplicationDbContext db)
     {
 		_db = db;
 		Category = new CategoryRepository(_db);
@@ -35,8 +38,11 @@ public class UnitOfWork : IUnitOfWork
         //blog
         Post = new PosttRepository(_db);
 
-		//comment
-	}
+        //comment
+
+        //image
+        ProductImage = new ProductImageRepository(_db);
+    }
 
     
     public void Save()

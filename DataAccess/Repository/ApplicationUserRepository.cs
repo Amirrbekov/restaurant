@@ -19,6 +19,11 @@ public class ApplicationUserRepository : Repository<ApplicationUser>, IApplicati
         _db = db;
     }
 
+    public void Update(ApplicationUser applicationUser)
+    {
+        _db.Update(applicationUser);
+    }
+
     //public ApplicationUser GetUserByUsername(string username)
     //{
     //    return _db.ApplicationUsers.FirstOrDefault(u => u.UserName == username);

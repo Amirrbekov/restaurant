@@ -65,9 +65,13 @@
               "target": "Package",
               "version": "[7.0.10, )"
             },
+            "SendWithBrevo": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
             "Stripe.net": {
               "target": "Package",
-              "version": "[41.28.0, )"
+              "version": "[42.1.0, )"
             }
           },
           "imports": [
@@ -148,9 +152,13 @@
               "target": "Package",
               "version": "[7.0.10, )"
             },
+            "SendWithBrevo": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
             "Stripe.net": {
               "target": "Package",
-              "version": "[41.28.0, )"
+              "version": "[42.1.0, )"
             }
           },
           "imports": [
@@ -227,9 +235,13 @@
               "target": "Package",
               "version": "[7.0.10, )"
             },
+            "SendWithBrevo": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
             "Stripe.net": {
               "target": "Package",
-              "version": "[41.28.0, )"
+              "version": "[42.1.0, )"
             }
           },
           "imports": [

@@ -11,8 +11,7 @@ public class Product
 	public string Name { get; set; } = null!;
 	public string? Description { get; set; }
 	public string SKU { get; set; }
-    [ValidateNever]
-    public string Image { get; set; } = null!;
+
 	[Display(Name = "Category")]
 	public int CategoryId { get; set; }
 	[ForeignKey("CategoryId")]
@@ -20,4 +19,7 @@ public class Product
 	public virtual Category Category { get; set; } = null!;
 	[Range(1, int.MaxValue, ErrorMessage = "Price should be greater than ${1}")]
 	public double Price { get; set; }
+
+	[ValidateNever]
+    public List<ProductImage> ProductImages { get; set; }
 }

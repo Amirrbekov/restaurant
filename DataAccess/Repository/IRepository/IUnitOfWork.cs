@@ -22,7 +22,10 @@ public interface IUnitOfWork
     //Blog
     IPosttRepository Post { get; }
 
-	//Comment
+    //Comment
 
-	void Save();
+    // Image
+    IProductImageRepository ProductImage { get; }
+
+    void Save();
 }
