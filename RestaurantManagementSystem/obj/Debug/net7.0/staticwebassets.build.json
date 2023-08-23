@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ATlS/0fE1R2M/DiCmvoIASRyDGOtcG92Y43B/sQzLco=",
+  "Hash": "ZaHHrElNFnEpG6pSF8RUIQZQwsctpF9cDmKtoE91PZ4=",
   "Source": "RestaurantManagementSystem",
   "BasePath": "_content/RestaurantManagementSystem",
   "Mode": "Default",
@@ -36769,6 +36769,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\order.js"
+    },
+    {
+      "Identity": "C:\\Users\\amirb\\source\\repos\\RestaurantManagementSystem\\RestaurantManagementSystem\\wwwroot\\js\\ordercustomer.js",
+      "SourceId": "RestaurantManagementSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\amirb\\source\\repos\\RestaurantManagementSystem\\RestaurantManagementSystem\\wwwroot\\",
+      "BasePath": "_content/RestaurantManagementSystem",
+      "RelativePath": "js/ordercustomer.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\ordercustomer.js"
     },
     {
       "Identity": "C:\\Users\\amirb\\source\\repos\\RestaurantManagementSystem\\RestaurantManagementSystem\\wwwroot\\js\\post.js",

@@ -72,6 +72,10 @@
                                                     </button>
                                                 </div>
                                             }
+                                            else
+                                            {
+                                                <img src="https://placehold.co/500x600/png" alt="img">
+                                            }
 
                                             
 
@@ -96,17 +100,7 @@
                             <div class="product_view_bottom">
                                 <div class="product_quantity">
                                     <div class="product_quantity_inner">
-                                        <span class="product_quantity_subtract">
-                                            <a asp-controller="Cart" asp-action="Minus" name="cartId" asp-route-cartId="@Model.ShoppingCartId" class="product_quantity_subtract">
-                                                <i class="bi bi-dash"></i>
-                                            </a>
-                                        </span>
                                         <input asp-for="Count" type="number" value="1">
-                                        <span class="product_quantity_add">
-                                            <a asp-controller="Cart" asp-action="Plus" asp-route-cartId="@Model.ShoppingCartId" class="product_quantity_subtract">
-                                                <i class="bi bi-plus"></i>
-                                            </a>
-                                        </span>
                                     </div>
                                 </div>
     

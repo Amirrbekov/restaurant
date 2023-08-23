@@ -15,6 +15,11 @@
             </a>
     </li>
     <li class="menu-item">
+        <a asp-area="Customer" asp-controller="Order" asp-action="Index" title="Manage">
+            <i class="bi bi-box2-fill"></i> My Orders
+        </a>
+    </li>
+    <li class="menu-item">
         <form id="logoutForm" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
             <button id="logout" type="submit" class="button">Logout</button>
         </form>

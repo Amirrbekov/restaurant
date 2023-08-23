@@ -196,7 +196,7 @@ public class CartController : Controller
 
     public IActionResult Plus(int cartId)
     {
-        var cartFromDb = _unitOfWork.ShoppingCart.Get(u => u.ShoppingCartId == cartId, tracked: true);
+        var cartFromDb = _unitOfWork.ShoppingCart.Get(u => u.ShoppingCartId == cartId);
         cartFromDb.Count += 1;
         _unitOfWork.ShoppingCart.Update(cartFromDb);
         _unitOfWork.Save();
