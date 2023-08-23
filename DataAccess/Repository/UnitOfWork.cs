@@ -21,6 +21,11 @@ public class UnitOfWork : IUnitOfWork
 
     //Comment
 
+    //Reservation
+    public IRestaurantGroupRepository RestaurantGroup { get; private set; }
+    public ITableReservationRepository TableReservation { get; private set; }
+    public ITableRepository Table { get; private set; }
+
     //Image
     public IProductImageRepository ProductImage { get; private set; }
 
@@ -39,6 +44,11 @@ public class UnitOfWork : IUnitOfWork
         Post = new PosttRepository(_db);
 
         //comment
+
+        //reservation
+        RestaurantGroup = new RestaurantGroupRepository(_db);
+        TableReservation = new TableReservationRepository(_db);
+        Table = new TableRepository(_db);
 
         //image
         ProductImage = new ProductImageRepository(_db);

@@ -24,6 +24,11 @@ public interface IUnitOfWork
 
     //Comment
 
+    //Reservation
+    IRestaurantGroupRepository RestaurantGroup { get; }
+    ITableReservationRepository TableReservation { get; }
+    ITableRepository Table { get; }
+
     // Image
     IProductImageRepository ProductImage { get; }
 

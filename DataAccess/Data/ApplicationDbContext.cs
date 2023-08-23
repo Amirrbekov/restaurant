@@ -28,6 +28,11 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
 
     //Comment
 
+    //Reservation
+    public DbSet<RestaurantsGroup> RestaurantsGroups { get; set; }
+    public DbSet<Table> Tables { get; set; }
+    public DbSet<TableReservation> TableReservations { get; set; }
+
     // Image
     public DbSet<ProductImage> ProductImages { get; set; }
 
