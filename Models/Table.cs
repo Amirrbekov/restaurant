@@ -21,5 +21,4 @@ public class Table
     [ForeignKey(nameof(RestaurantGroupId))]
     [ValidateNever]
     public RestaurantsGroup RestaurantGroup { get; set; }
-
 }

@@ -76,10 +76,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUmVzdGF1cmFudFxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/amirb/source/repos/RestaurantManagementSystem/RestaurantManagementSystem/Areas/Admin/Views/Restaurant/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUmVzdGF1cmFudFxEZWxldGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/amirb/source/repos/RestaurantManagementSystem/RestaurantManagementSystem/Areas/Admin/Views/Restaurant/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUmVzdGF1cmFudFxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -98,6 +94,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/amirb/source/repos/RestaurantManagementSystem/RestaurantManagementSystem/Areas/Admin/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/amirb/source/repos/RestaurantManagementSystem/RestaurantManagementSystem/Areas/Admin/Views/Table/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGFibGVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/amirb/source/repos/RestaurantManagementSystem/RestaurantManagementSystem/Areas/Admin/Views/Table/Upsert.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGFibGVcVXBzZXJ0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/amirb/source/repos/RestaurantManagementSystem/RestaurantManagementSystem/Areas/Admin/Views/User/Index.cshtml]

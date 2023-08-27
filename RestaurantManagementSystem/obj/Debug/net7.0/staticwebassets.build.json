@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ZaHHrElNFnEpG6pSF8RUIQZQwsctpF9cDmKtoE91PZ4=",
+  "Hash": "eTep0X3M3u7kbxm0Fg7bsGMyAXUnvHhRlUKLPfYrGz8=",
   "Source": "RestaurantManagementSystem",
   "BasePath": "_content/RestaurantManagementSystem",
   "Mode": "Default",
@@ -36837,6 +36837,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\qr.js"
+    },
+    {
+      "Identity": "C:\\Users\\amirb\\source\\repos\\RestaurantManagementSystem\\RestaurantManagementSystem\\wwwroot\\js\\table.js",
+      "SourceId": "RestaurantManagementSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\amirb\\source\\repos\\RestaurantManagementSystem\\RestaurantManagementSystem\\wwwroot\\",
+      "BasePath": "_content/RestaurantManagementSystem",
+      "RelativePath": "js/table.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\table.js"
     },
     {
       "Identity": "C:\\Users\\amirb\\source\\repos\\RestaurantManagementSystem\\RestaurantManagementSystem\\wwwroot\\js\\user.js",
