@@ -13,8 +13,14 @@ public class RestaurantsGroup
     [Key]
     public int Id { get; set; }
 
-    [Display(Name = "RestarauntGroupName")]
     [MaxLength(50)]
     [Required]
     public string Name { get; set; }
+    public string PhoneNumber { get; set; } = null!;
+    public string Address { get; set; } = null!;
+    public string City { get; set; } = null!;
+    public string Country { get; set; } = null!;
+    public string PostalCode { get; set; } = null!;
+    public string ZipCode { get; set; } = null!;
+    public string Map { get; set; } = null!;
 }

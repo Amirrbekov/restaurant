@@ -1,0 +1,74 @@
+﻿@model RestaurantsGroup
+
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-secondary bg-gradient ml-0 py-2">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2">Update Restaurant Group</h2>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p4">
+        <form method="post" class="user">
+            <div class="border p-3 mt-4">
+                <div asp-validation-summary="All"></div>
+                <div class="form-group col-12">
+                    <input asp-for="Name" class="form-control" />
+                    <label asp-for="Name" class="ms-2"></label>
+                    <span asp-validation-for="Name" class="text-bg-danger"></span>
+                </div>
+                <div class="form-group col-12">
+                    <input asp-for="PhoneNumber" class="form-control" />
+                    <label asp-for="PhoneNumber" class="ms-2"></label>
+                    <span asp-validation-for="PhoneNumber" class="text-bg-danger"></span>
+                </div>
+                <div class="form-group col-12">
+                    <input asp-for="Address" class="form-control" />
+                    <label asp-for="Address" class="ms-2"></label>
+                    <span asp-validation-for="Address" class="text-bg-danger"></span>
+                </div>
+                <div class="form-group col-12">
+                    <input asp-for="City" class="form-control" />
+                    <label asp-for="City" class="ms-2"></label>
+                    <span asp-validation-for="City" class="text-bg-danger"></span>
+                </div>
+                <div class="form-group col-12">
+                    <input asp-for="Country" class="form-control" />
+                    <label asp-for="Country" class="ms-2"></label>
+                    <span asp-validation-for="Country" class="text-bg-danger"></span>
+                </div>
+                <div class="form-group col-12">
+                    <input asp-for="PostalCode" class="form-control" />
+                    <label asp-for="PostalCode" class="ms-2"></label>
+                    <span asp-validation-for="PostalCode" class="text-bg-danger"></span>
+                </div>
+                <div class="form-group col-12">
+                    <input asp-for="ZipCode" class="form-control" />
+                    <label asp-for="ZipCode" class="ms-2"></label>
+                    <span asp-validation-for="ZipCode" class="text-bg-danger"></span>
+                </div>
+                <div class="form-group col-12">
+                    <input asp-for="Map" class="form-control" />
+                    <label asp-for="Map" class="ms-2"></label>
+                    <span asp-validation-for="Map" class="text-bg-danger"></span>
+                </div>
+                <div class="row">
+                    <div class="col-6 col-md-3">
+                        <button type="submit" class="btn btn-primary form-control">Update</button>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <a asp-controller="Restaurant" asp-action="Index" class="btn btn-outline-primary border form-control">
+                            Back To List
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

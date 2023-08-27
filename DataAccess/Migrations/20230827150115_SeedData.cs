@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class SeedData : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -57,6 +57,26 @@ namespace DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "RestaurantsGroups",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Country = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PostalCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ZipCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Map = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RestaurantsGroups", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -86,7 +106,6 @@ namespace DataAccess.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     SKU = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CategoryId = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<double>(type: "float", nullable: false)
                 },
@@ -134,6 +153,46 @@ namespace DataAccess.Migrations
                         column: x => x.CompanyId,
                         principalTable: "Companies",
                         principalColumn: "CompanyId");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Tables",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Seats = table.Column<int>(type: "int", nullable: false),
+                    RestaurantGroupId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tables", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Tables_RestaurantsGroups_RestaurantGroupId",
+                        column: x => x.RestaurantGroupId,
+                        principalTable: "RestaurantsGroups",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProductImages",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ProductId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductImages", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ProductImages_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "ProductId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -306,6 +365,29 @@ namespace DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "TableReservations",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Time = table.Column<TimeSpan>(type: "time", nullable: false),
+                    TableId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TableReservations", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TableReservations_Tables_TableId",
+                        column: x => x.TableId,
+                        principalTable: "Tables",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "OrderDetails",
                 columns: table => new
                 {
@@ -356,17 +438,27 @@ namespace DataAccess.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Products",
-                columns: new[] { "ProductId", "CategoryId", "Description", "Image", "Name", "Price", "SKU" },
+                table: "RestaurantsGroups",
+                columns: new[] { "Id", "Address", "City", "Country", "Map", "Name", "PhoneNumber", "PostalCode", "ZipCode" },
                 values: new object[,]
                 {
-                    { 1, 4, "Lorem Ipsum is simply dummy text of the printing and typesetting industry", "", "Cocoa Brownies", 95.0, "012" },
-                    { 3, 2, "Lorem Ipsum is simply dummy text of the printing and typesetting industry", "", "Sausage Assortment", 14.0, "013" },
-                    { 4, 3, "Lorem Ipsum is simply dummy text of the printing and typesetting industry", "", "Caesar With Chicken", 11.0, "Non" },
-                    { 5, 2, "Lorem Ipsum is simply dummy text of the printing and typesetting industry", "", "Steak With Garnish", 28.0, "Non" },
-                    { 6, 1, "Lorem Ipsum is simply dummy text of the printing and typesetting industry", "", "Club Sandwich", 9.5, "Non" },
-                    { 7, 4, "Lorem Ipsum is simply dummy text of the printing and typesetting industry", "", "Panne Arabbiata", 9.0, "Non" },
-                    { 8, 5, "Lorem Ipsum is simply dummy text of the printing and typesetting industry", "", "Kanafeh", 9.0, "Non" }
+                    { 1, "Babək prospekti 2269-cu məhəllə", "Baku", "Azerbaijan", "https://goo.gl/maps/Z2SsiepqhPVVaLj29", "HungryBuz", "0505050505", "123", "123" },
+                    { 2, "Məmməd Əmin Rəsulzadə, Bakı 0101", "Baku", "Azerbaijan", "https://goo.gl/maps/i6Wxwq5KRtLJ4v4t7", "HungryBuz", "060660600660", "234", "234" },
+                    { 3, "Metin Akkuş, 06450 Чанкая/Анкара", "Ankara", "Turkey", "https://goo.gl/maps/EXrsmLbGNSvwr2gKA", "HungryBuz", "0101010100101", "345", "345" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "ProductId", "CategoryId", "Description", "Name", "Price", "SKU" },
+                values: new object[,]
+                {
+                    { 1, 4, "Lorem Ipsum is simply dummy text of the printing and typesetting industry", "Cocoa Brownies", 95.0, "012" },
+                    { 3, 2, "Lorem Ipsum is simply dummy text of the printing and typesetting industry", "Sausage Assortment", 14.0, "013" },
+                    { 4, 3, "Lorem Ipsum is simply dummy text of the printing and typesetting industry", "Caesar With Chicken", 11.0, "Non" },
+                    { 5, 2, "Lorem Ipsum is simply dummy text of the printing and typesetting industry", "Steak With Garnish", 28.0, "Non" },
+                    { 6, 1, "Lorem Ipsum is simply dummy text of the printing and typesetting industry", "Club Sandwich", 9.5, "Non" },
+                    { 7, 4, "Lorem Ipsum is simply dummy text of the printing and typesetting industry", "Panne Arabbiata", 9.0, "Non" },
+                    { 8, 5, "Lorem Ipsum is simply dummy text of the printing and typesetting industry", "Kanafeh", 9.0, "Non" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -434,6 +526,11 @@ namespace DataAccess.Migrations
                 column: "ApplicationUserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ProductImages_ProductId",
+                table: "ProductImages",
+                column: "ProductId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Products_CategoryId",
                 table: "Products",
                 column: "CategoryId");
@@ -447,6 +544,16 @@ namespace DataAccess.Migrations
                 name: "IX_ShoppingCarts_ProductId",
                 table: "ShoppingCarts",
                 column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TableReservations_TableId",
+                table: "TableReservations",
+                column: "TableId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tables_RestaurantGroupId",
+                table: "Tables",
+                column: "RestaurantGroupId");
         }
 
         /// <inheritdoc />
@@ -474,7 +581,13 @@ namespace DataAccess.Migrations
                 name: "Posts");
 
             migrationBuilder.DropTable(
+                name: "ProductImages");
+
+            migrationBuilder.DropTable(
                 name: "ShoppingCarts");
+
+            migrationBuilder.DropTable(
+                name: "TableReservations");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -486,10 +599,16 @@ namespace DataAccess.Migrations
                 name: "Products");
 
             migrationBuilder.DropTable(
+                name: "Tables");
+
+            migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "Categories");
+
+            migrationBuilder.DropTable(
+                name: "RestaurantsGroups");
 
             migrationBuilder.DropTable(
                 name: "Companies");

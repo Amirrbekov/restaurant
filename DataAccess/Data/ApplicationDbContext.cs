@@ -40,6 +40,12 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
         base.OnModelCreating(modelBuilder);
 
+        modelBuilder.Entity<RestaurantsGroup>().HasData(
+            new RestaurantsGroup { Id = 1, Name = "HungryBuz", PhoneNumber = "0505050505", Address = "Babək prospekti 2269-cu məhəllə", City ="Baku", Country = "Azerbaijan",  PostalCode = "123", ZipCode = "123", Map = "https://goo.gl/maps/Z2SsiepqhPVVaLj29" },
+            new RestaurantsGroup { Id = 2, Name = "HungryBuz", PhoneNumber = "060660600660", Address = "Məmməd Əmin Rəsulzadə, Bakı 0101", City = "Baku", Country = "Azerbaijan", PostalCode = "234", ZipCode = "234", Map = "https://goo.gl/maps/i6Wxwq5KRtLJ4v4t7" },
+            new RestaurantsGroup { Id = 3, Name = "HungryBuz", PhoneNumber = "0101010100101", Address = "Metin Akkuş, 06450 Чанкая/Анкара", City = "Ankara", Country = "Turkey", PostalCode = "345", ZipCode = "345", Map = "https://goo.gl/maps/EXrsmLbGNSvwr2gKA" }
+            );
+
         modelBuilder.Entity<Category>().HasData(
             new Category { CategoryId = 1, Name = "Main Course" },
             new Category { CategoryId = 2, Name = "Steaks" },

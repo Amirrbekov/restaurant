@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230822173252_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20230827150115_SeedData")]
+    partial class SeedData
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -473,10 +473,6 @@ namespace DataAccess.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Image")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -500,7 +496,6 @@ namespace DataAccess.Migrations
                             ProductId = 1,
                             CategoryId = 4,
                             Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                            Image = "",
                             Name = "Cocoa Brownies",
                             Price = 95.0,
                             SKU = "012"
@@ -510,7 +505,6 @@ namespace DataAccess.Migrations
                             ProductId = 3,
                             CategoryId = 2,
                             Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                            Image = "",
                             Name = "Sausage Assortment",
                             Price = 14.0,
                             SKU = "013"
@@ -520,7 +514,6 @@ namespace DataAccess.Migrations
                             ProductId = 4,
                             CategoryId = 3,
                             Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                            Image = "",
                             Name = "Caesar With Chicken",
                             Price = 11.0,
                             SKU = "Non"
@@ -530,7 +523,6 @@ namespace DataAccess.Migrations
                             ProductId = 5,
                             CategoryId = 2,
                             Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                            Image = "",
                             Name = "Steak With Garnish",
                             Price = 28.0,
                             SKU = "Non"
@@ -540,7 +532,6 @@ namespace DataAccess.Migrations
                             ProductId = 6,
                             CategoryId = 1,
                             Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                            Image = "",
                             Name = "Club Sandwich",
                             Price = 9.5,
                             SKU = "Non"
@@ -550,7 +541,6 @@ namespace DataAccess.Migrations
                             ProductId = 7,
                             CategoryId = 4,
                             Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                            Image = "",
                             Name = "Panne Arabbiata",
                             Price = 9.0,
                             SKU = "Non"
@@ -560,10 +550,115 @@ namespace DataAccess.Migrations
                             ProductId = 8,
                             CategoryId = 5,
                             Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                            Image = "",
                             Name = "Kanafeh",
                             Price = 9.0,
                             SKU = "Non"
+                        });
+                });
+
+            modelBuilder.Entity("Models.ProductImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductImages");
+                });
+
+            modelBuilder.Entity("Models.RestaurantsGroup", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Map")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PostalCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ZipCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RestaurantsGroups");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "Babək prospekti 2269-cu məhəllə",
+                            City = "Baku",
+                            Country = "Azerbaijan",
+                            Map = "https://goo.gl/maps/Z2SsiepqhPVVaLj29",
+                            Name = "HungryBuz",
+                            PhoneNumber = "0505050505",
+                            PostalCode = "123",
+                            ZipCode = "123"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "Məmməd Əmin Rəsulzadə, Bakı 0101",
+                            City = "Baku",
+                            Country = "Azerbaijan",
+                            Map = "https://goo.gl/maps/i6Wxwq5KRtLJ4v4t7",
+                            Name = "HungryBuz",
+                            PhoneNumber = "060660600660",
+                            PostalCode = "234",
+                            ZipCode = "234"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Address = "Metin Akkuş, 06450 Чанкая/Анкара",
+                            City = "Ankara",
+                            Country = "Turkey",
+                            Map = "https://goo.gl/maps/EXrsmLbGNSvwr2gKA",
+                            Name = "HungryBuz",
+                            PhoneNumber = "0101010100101",
+                            PostalCode = "345",
+                            ZipCode = "345"
                         });
                 });
 
@@ -592,6 +687,59 @@ namespace DataAccess.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("ShoppingCarts");
+                });
+
+            modelBuilder.Entity("Models.Table", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("RestaurantGroupId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Seats")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RestaurantGroupId");
+
+                    b.ToTable("Tables");
+                });
+
+            modelBuilder.Entity("Models.TableReservation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TableId")
+                        .HasColumnType("int");
+
+                    b.Property<TimeSpan>("Time")
+                        .HasColumnType("time");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TableId");
+
+                    b.ToTable("TableReservations");
                 });
 
             modelBuilder.Entity("Models.ApplicationUser", b =>
@@ -719,6 +867,17 @@ namespace DataAccess.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("Models.ProductImage", b =>
+                {
+                    b.HasOne("Models.Product", "Product")
+                        .WithMany("ProductImages")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("Models.ShoppingCart", b =>
                 {
                     b.HasOne("Models.ApplicationUser", "ApplicationUser")
@@ -738,6 +897,28 @@ namespace DataAccess.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("Models.Table", b =>
+                {
+                    b.HasOne("Models.RestaurantsGroup", "RestaurantGroup")
+                        .WithMany()
+                        .HasForeignKey("RestaurantGroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("RestaurantGroup");
+                });
+
+            modelBuilder.Entity("Models.TableReservation", b =>
+                {
+                    b.HasOne("Models.Table", "Table")
+                        .WithMany()
+                        .HasForeignKey("TableId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Table");
+                });
+
             modelBuilder.Entity("Models.ApplicationUser", b =>
                 {
                     b.HasOne("Models.Company", "Company")
@@ -745,6 +926,11 @@ namespace DataAccess.Migrations
                         .HasForeignKey("CompanyId");
 
                     b.Navigation("Company");
+                });
+
+            modelBuilder.Entity("Models.Product", b =>
+                {
+                    b.Navigation("ProductImages");
                 });
 #pragma warning restore 612, 618
         }

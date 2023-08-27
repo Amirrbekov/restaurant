@@ -575,6 +575,90 @@ namespace DataAccess.Migrations
                     b.ToTable("ProductImages");
                 });
 
+            modelBuilder.Entity("Models.RestaurantsGroup", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Map")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PostalCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ZipCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RestaurantsGroups");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "Babək prospekti 2269-cu məhəllə",
+                            City = "Baku",
+                            Country = "Azerbaijan",
+                            Map = "https://goo.gl/maps/Z2SsiepqhPVVaLj29",
+                            Name = "HungryBuz",
+                            PhoneNumber = "0505050505",
+                            PostalCode = "123",
+                            ZipCode = "123"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "Məmməd Əmin Rəsulzadə, Bakı 0101",
+                            City = "Baku",
+                            Country = "Azerbaijan",
+                            Map = "https://goo.gl/maps/i6Wxwq5KRtLJ4v4t7",
+                            Name = "HungryBuz",
+                            PhoneNumber = "060660600660",
+                            PostalCode = "234",
+                            ZipCode = "234"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Address = "Metin Akkuş, 06450 Чанкая/Анкара",
+                            City = "Ankara",
+                            Country = "Turkey",
+                            Map = "https://goo.gl/maps/EXrsmLbGNSvwr2gKA",
+                            Name = "HungryBuz",
+                            PhoneNumber = "0101010100101",
+                            PostalCode = "345",
+                            ZipCode = "345"
+                        });
+                });
+
             modelBuilder.Entity("Models.ShoppingCart", b =>
                 {
                     b.Property<int>("ShoppingCartId")
@@ -600,6 +684,59 @@ namespace DataAccess.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("ShoppingCarts");
+                });
+
+            modelBuilder.Entity("Models.Table", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("RestaurantGroupId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Seats")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RestaurantGroupId");
+
+                    b.ToTable("Tables");
+                });
+
+            modelBuilder.Entity("Models.TableReservation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TableId")
+                        .HasColumnType("int");
+
+                    b.Property<TimeSpan>("Time")
+                        .HasColumnType("time");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TableId");
+
+                    b.ToTable("TableReservations");
                 });
 
             modelBuilder.Entity("Models.ApplicationUser", b =>
@@ -755,6 +892,28 @@ namespace DataAccess.Migrations
                     b.Navigation("ApplicationUser");
 
                     b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("Models.Table", b =>
+                {
+                    b.HasOne("Models.RestaurantsGroup", "RestaurantGroup")
+                        .WithMany()
+                        .HasForeignKey("RestaurantGroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("RestaurantGroup");
+                });
+
+            modelBuilder.Entity("Models.TableReservation", b =>
+                {
+                    b.HasOne("Models.Table", "Table")
+                        .WithMany()
+                        .HasForeignKey("TableId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Table");
                 });
 
             modelBuilder.Entity("Models.ApplicationUser", b =>
