@@ -1,0 +1,54 @@
+﻿@*DataTables.net*@
+<link rel="stylesheet" href="//cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css" asp-append-version="true" />
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Product List</h1>
+    <div class="card-body p-4">
+        <div class="row pb-3">
+            <div class="col-6 text-end">
+                <a asp-controller="TableReservation" asp-action="CreateReservation" class="btn btn-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                    </svg> Add a New Reservation
+                </a>
+            </div>
+        </div>
+        <table class="table table-bordered" id="tblData" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Reservation Id</th>
+                    <th>Name</th>
+                    <th>Phone Number</th>
+                    <th>Number Of People</th>
+                    <th>Arrival Date Time</th>
+                    <th>Table Id</th>
+                    <th>Is Active</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>Reservation Id</th>
+                    <th>Name</th>
+                    <th>Phone Number</th>
+                    <th>Number Of People</th>
+                    <th>Arrival Date Time</th>
+                    <th>Table Id</th>
+                    <th>Is Active</th>
+                    <th></th>
+                </tr>
+            </tfoot>
+        </table>
+
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+@section Scripts{
+    @*DataTables.net*@
+    <script src="//cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js" asp-append-version="true"></script>
+    <script src="~/js/reservation.js"></script>
+}

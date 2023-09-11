@@ -2,6 +2,7 @@
 using DataAccess.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Models;
 using Models.ViewModels;
 
@@ -11,15 +12,13 @@ namespace RestaurantManagementSystem.Areas.Admin.Controllers;
 public class TableController : Controller
 {
     private readonly IUnitOfWork _unitOfWork;
-    private readonly IWebHostEnvironment _webHostEnvironment;
-
     public TableController(IUnitOfWork unitOfWork)
     {
         _unitOfWork = unitOfWork;
     }
     public IActionResult Index()
     {
-        List<Table> objTable = _unitOfWork.Table.GetAll(includeProperties: "RestaurantGroup").ToList();
+        var objTable = _unitOfWork.Table.GetAll(includeProperties: "RestaurantGroup").ToList();
 
         return View(objTable);
     }
@@ -33,7 +32,7 @@ public class TableController : Controller
                 Text = u.Name,
                 Value = u.Id.ToString()
             }),
-            Table = new Table()
+            Table = new Models.Table()
         };
 
         if (id == null || id == 0)
@@ -83,7 +82,7 @@ public class TableController : Controller
 
     public IActionResult GetAll()
     {
-        List<Table> objTable = _unitOfWork.Table.GetAll(includeProperties: "RestaurantGroup").ToList();
+        var objTable = _unitOfWork.Table.GetAll(includeProperties: "RestaurantGroup").ToList();
 
         return Json(new { data = objTable });
     }

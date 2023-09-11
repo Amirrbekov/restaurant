@@ -8421,6 +8421,10 @@
       "PackagePath": "staticwebassets\\js\\qr.js"
     },
     {
+      "Id": "C:\\Users\\amirb\\source\\repos\\RestaurantManagementSystem\\RestaurantManagementSystem\\wwwroot\\js\\reservation.js",
+      "PackagePath": "staticwebassets\\js\\reservation.js"
+    },
+    {
       "Id": "C:\\Users\\amirb\\source\\repos\\RestaurantManagementSystem\\RestaurantManagementSystem\\wwwroot\\js\\table.js",
       "PackagePath": "staticwebassets\\js\\table.js"
     },

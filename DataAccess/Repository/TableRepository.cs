@@ -24,4 +24,10 @@ public class TableRepository : Repository<Table>, ITableRepository
     {
         
     }
+
+    public int Count()
+    {
+        return _db.Tables.Count();
+
+    }
 }

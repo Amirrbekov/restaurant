@@ -10,4 +10,6 @@ namespace DataAccess.Repository.IRepository;
 public interface ITableRepository : IRepository<Table>
 {
     void Update(Table table);
+
+    int Count();
 }
