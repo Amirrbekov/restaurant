@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "bkiT4sTxbWCR2wqtyrZVv5ITVLDI1Tc1y8QmE6DYN5o=",
+  "Hash": "CA2QJy03wD9fQiksQ+MU3IxBA2ZMR5Pf7wQde0rRVQY=",
   "Source": "RestaurantManagementSystem",
   "BasePath": "_content/RestaurantManagementSystem",
   "Mode": "Default",
@@ -36616,6 +36616,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\post\\1401a9ac-685e-4653-971d-7393bb37f0a5.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\amirb\\source\\repos\\RestaurantManagementSystem\\RestaurantManagementSystem\\wwwroot\\images\\post\\1d5eb64e-4c22-42f5-bd44-167391778c35.jpg",
+      "SourceId": "RestaurantManagementSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\amirb\\source\\repos\\RestaurantManagementSystem\\RestaurantManagementSystem\\wwwroot\\",
+      "BasePath": "_content/RestaurantManagementSystem",
+      "RelativePath": "images/post/1d5eb64e-4c22-42f5-bd44-167391778c35.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\post\\1d5eb64e-4c22-42f5-bd44-167391778c35.jpg"
     },
     {
       "Identity": "C:\\Users\\amirb\\source\\repos\\RestaurantManagementSystem\\RestaurantManagementSystem\\wwwroot\\images\\post\\4f3aa730-4650-4419-8ee7-760bf789c8b7.jpg",

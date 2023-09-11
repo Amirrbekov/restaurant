@@ -27,9 +27,4 @@
     <ProjectReference Include="..\Utility\Utility.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Repository\Comment\" />
-    <Folder Include="Repository\IRepository\Comment\" />
-  </ItemGroup>
-
 </Project>

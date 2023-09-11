@@ -1,4 +1,5 @@
 ﻿using DataAccess.Repository.IRepository.Blog;
+using DataAccess.Repository.IRepository.Comment;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -22,10 +23,12 @@ public interface IUnitOfWork
     //Blog
     IPosttRepository Post { get; }
 
-    //Comment
+	//Comment
+	IContactRepository Contact { get; }
+	ICommentRepository Comment { get; }
 
-    //Reservation
-    IRestaurantGroupRepository RestaurantGroup { get; }
+	//Reservation
+	IRestaurantGroupRepository RestaurantGroup { get; }
     ITableReservationRepository TableReservation { get; }
     ITableRepository Table { get; }
 

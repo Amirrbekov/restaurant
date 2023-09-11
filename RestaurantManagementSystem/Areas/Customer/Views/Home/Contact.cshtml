@@ -1,4 +1,5 @@
-﻿
+﻿@using Models.Comment;
+@model Contact
 	<!-- Page Header -->
 	<div class="page-header">
 		<div class="page-header-content bg_image_header jarallax">
@@ -12,62 +13,22 @@
 		<div class="contact">
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-5">
-						<h3 class="sec_large_title">Visit any of Our Brunch & Have a great Culinary Experience</h3>
-					</div>
-					<div class="col-lg-7">
-						<div class="keepintouch">
-							<div class="communication">
-								<div class="info_body">
-									<h5>New Yourk</h5>
-									<p>
-										112/9 Madison Park, New York <br />
-										hungrybuzz.ny@gmail.com<br />
-										+33 123 456 789 (hungry)
-									</p>
-								</div>
-							</div>
-							<div class="communication">
-								<div class="info_body">
-									<h5>California</h5>
-									<p>
-										112/9 Madison Park, New York <br />
-										hungrybuzz.ny@gmail.com<br />
-										+33 123 456 789 (hungry)
-									</p>
-								</div>
-							</div>
-							<div class="communication">
-								<div class="info_body">
-									<h5>Utah</h5>
-									<p>
-										112/9 Madison Park, New York <br />
-										hungrybuzz.ny@gmail.com<br />
-										+33 123 456 789 (hungry)
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-lg-5">
+					<div class="col-lg-9">
 						<div class="contact_us">
 							<div class="section_header">
 								<h2 class="section_title">Keep in Touch</h2>
 								<h6 class="section_sub_title">Send us mail if you have anything to suggest</h6>
 							</div>
-							<form class="contact_form" action="https://wpthemebooster.com/demo/themeforest/html/hungrybuzz/dark/contact.php" method="post">
+							<form class="contact_form" id="contactForm" asp-action="Contact" method="post">
 								<div class="form-container">
 									<div class="form-group">
-										<input type="text" name="name" class="form-control" placeholder="Your Name*" required="">
+										<input type="text" asp-for="Name" name="name" class="form-control" placeholder="Your Name*" required="">
 									</div>
 									<div class="form-group">
-										<input type="email" name="email" class="form-control" placeholder="Your Email Address*" required="">
+										<input type="email" asp-for="Email" name="email" class="form-control" placeholder="Your Email Address*" required="">
 									</div>
 									<div class="form-group">
-										<textarea name="message" class="form-control" placeholder="Message Here*" required=""></textarea>
+										<textarea name="message" asp-for="Message" class="form-control" placeholder="Message Here*" required=""></textarea>
 									</div>
 									<div class="form-group">
 										<input class="button" type="submit" value="Send" name="submit">
@@ -76,12 +37,51 @@
 							</form>
 						</div>
 					</div>
-					<div class="col-lg-7">
-						<div class="gmapbox">
-							<div id="googleMap" class="map"></div>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+@{
+	if (TempData["Message"] != null)
+	{
+		<div class="alert alert-info">
+			@TempData["Message"]
+		</div>
+	}
+	ViewData["Title"] = "Contact";
+}
+
+<div id="result" class="alert alert-info" style="display:none">
+
+</div>
+
+@section Scripts{
+	<script>
+		function contactForm() {
+			var nameSurname = $("#name").val();
+			var email = $("email").val();
+			var message = $("message").val();
+
+
+			var messagge = {
+				"name": nameSurname,
+				"email": email,
+				"message": message
+			};
+			$.ajax({
+				method: "POST",
+				url: "/Customer/Home/Contact",
+				type: "json",
+				data: message,
+				success: function (data) {
+					document.getElementById("contactForm").reset();
+					$("result").show().html("Message was submited succesfully").delay("5000").fadeOut();
+				}
+						Error: function (err) {
+					$("result").show().removeClass("alert-info").addClass("alert-danger").html("Something went wrong! Message was't submitted").delay("9000").fadeOut();
+				}
+			}
+					})
+				}
+	</script>
+}

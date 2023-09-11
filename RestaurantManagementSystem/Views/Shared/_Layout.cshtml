@@ -58,13 +58,10 @@
 					<div class="mainnav">
 						<ul class="main_menu">
 							<li class="menu-item">
-								<a asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
-							</li>
-							<li class="menu-item">
 								<a asp-area="Customer" asp-controller="Home" asp-action="About">About</a>
 							</li>
 							<li class="menu-item">
-								<a asp-area="Customer" asp-controller="Home" asp-action="Menu">Menu</a>
+								<a asp-area="Customer" asp-controller="Home" asp-action="Contact">Contact</a>
 							</li>
 							<li class="menu-item logo-item">
 								<a asp-area="Customer" asp-controller="Home" asp-action="Index">
@@ -76,9 +73,6 @@
 							</li>
 							<li class="menu-item">
 								<a asp-area="Customer" asp-controller="Blog" asp-action="Index">Blog</a>
-							</li>
-							<li class="menu-item">
-								<a asp-area="Customer" asp-controller="Home" asp-action="Contact">Contact</a>
 							</li>
 							<li class="menu-item menu-item-has-children">
 								@if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Customer))

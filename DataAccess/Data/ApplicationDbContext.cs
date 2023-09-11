@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Models;
 using Models.Blog;
+using Models.Comment;
 using System.Collections.Generic;
 
 namespace DataAccess.Data;
@@ -26,10 +27,12 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
 
     public DbSet<Post> Posts { get; set; }
 
-    //Comment
+	//Comment
+	public DbSet<Contact> Contacts { get; set; }
+	public DbSet<Comments> Comments { get; set; }
 
-    //Reservation
-    public DbSet<RestaurantsGroup> RestaurantsGroups { get; set; }
+	//Reservation
+	public DbSet<RestaurantsGroup> RestaurantsGroups { get; set; }
     public DbSet<Table> Tables { get; set; }
     public DbSet<TableReservation> TableReservations { get; set; }
 

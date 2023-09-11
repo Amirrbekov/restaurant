@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Models;
+using Models.Comment;
 using Models.ViewModels;
 using System.Diagnostics;
 using System.Security.Claims;
@@ -26,11 +27,6 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Menu() 
-    { 
-        return View();
-    }
-
     public IActionResult About()
     {
         return View();
@@ -39,6 +35,27 @@ public class HomeController : Controller
 	public IActionResult Contact()
     {
         return View();
+    }
+    [HttpPost]
+    public IActionResult Contact(Contact contact)
+    {
+        if (ModelState.IsValid)
+        {
+            try
+            {
+                contact.CreateDate = DateTime.Now;
+                _unitOfWork.Contact.Add(contact);
+                _unitOfWork.Save();
+                TempData["Message"] = "Message was submited successfully";
+                return RedirectToAction(nameof(Contact));
+            }
+            catch (Exception)
+            {
+                TempData["Message"] = "Something went wrong! Message was't submitted";
+                throw;
+            }
+        }
+        return View(contact);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

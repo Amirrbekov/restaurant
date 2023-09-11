@@ -40,7 +40,14 @@
 									</h3>
 								</div>
 								<div class="post_intro">
-									<p>@Html.Raw(item.Body.Substring(0,100) + "...")</p>
+									@if (!string.IsNullOrEmpty(item.Body) && item.Body.Length >= 100)
+									{
+										<p>@Html.Raw(item.Body.Substring(0, 100) + "...")</p>
+									}
+									else if (!string.IsNullOrEmpty(item.Body))
+									{
+										<p>@Html.Raw(item.Body)</p>
+									}
 								</div>
 								<div class="post_footer">
 									<div class="read_more">

@@ -36,6 +36,80 @@
 						</div>
 					</div>
 				</div>
+				<div class="row">
+					<div class="col-lg-11">
+						<div class="comment-respond" data-aos="fade-up" data-aos-duration="1000">
+							<h3 class="comment-reply-title">Make A Comment</h3>
+							<form class="comment-form" asp-controller="Blog" asp-action="Details" method="post">
+								<input type="hidden" asp-for="Post.PostId" />
+								<p class="logged-in-as">Your email address will not be published. Required fields are marked *</p>
+								<div class="form-container">
+									<div class="row">
+										<div class="col-md-12 col-lg-12">
+											<div class="form-group">
+												<textarea name="message" name="message" class="form-control" placeholder="Text Here*" asp-for="Comments.Message" required></textarea>
+											</div>
+										</div>
+										<div class="col-md-4 col-lg-4">
+											<div class="form-group">
+												<input type="text" name="name" class="form-control" placeholder="Name*" asp-for="Comments.Name" required>
+											</div>
+										</div>
+										<div class="col-md-4 col-lg-4">
+											<div class="form-group">
+												<input type="email" name="email" class="form-control" placeholder="E-mail*" asp-for="Comments.Email" required>
+											</div>
+										</div>
+										<div class="col-md-12 col-lg-12">
+											<div class="button_group">
+												<button class="button" type="submit" name="submit">Submit</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-11">
+						<div class="comments-area">
+							<h3 class="comments-title">Comments</h3>
+							<ul class="comment-list">
+								@foreach (var item in Model.CommentList)
+								{
+									<li class="comment even thread-even depth-1">
+										<div class="commenter-block">
+											<div class="comment-content">
+												<div class="comment-author-name">@item.Name <span class="comment-reply"><a href="#" class="comment-reply-link">Reply <i	class="ion-chevron-right"></i><i class="ion-chevron-right"></i></a></span></div>
+												<div class="comment-author-comment">
+													<p>@item.Message</p>
+												</div>
+												<time class="comment-date">@item.Created.ToShortDateString()</time>
+											</div>
+										</div>
+										<ul class="children">
+												<li class="comment even thread-even depth-2">
+													<div class="commenter-block">
+														<div class="comment-avatar">
+															<img alt="img" src="../assets/images/blog/commenter2.png" class="avatar">
+														</div>
+														<div class="comment-content">
+															<div class="comment-author-name">Patricia Doe <span class="comment-reply"><a href="#" class="comment-reply-link" >Reply <i class="ion-chevron-right"></i><i class="ion-chevron-right"></i></a></span></div>
+															<div class="comment-author-comment">
+																<p>Lorem ipsum dolor sit amet, consectetur. Ut enim ad minima veniam quis nostrum exercitationem mosequatu autem.</p>
+															</div>
+															<time class="comment-date">August 29, 2022</time>
+														</div>
+													</div>
+												</li><!-- #comment-## -->
+											</ul><!-- .children -->
+									</li><!-- #comment-## -->
+								}
+							</ul>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

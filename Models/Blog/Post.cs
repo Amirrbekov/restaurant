@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Models.Comment;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Models.Blog;
@@ -19,5 +20,6 @@ public class Post
     [ValidateNever]
     [ForeignKey(nameof(ApplicationUserId))]
     public virtual ApplicationUser ApplicationUser { get; set; }
+	public ICollection<Comments> Comments { get; set; }
 
 }

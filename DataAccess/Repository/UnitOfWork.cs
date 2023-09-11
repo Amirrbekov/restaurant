@@ -1,7 +1,9 @@
 ﻿using DataAccess.Data;
 using DataAccess.Repository.Blog;
+using DataAccess.Repository.Comment;
 using DataAccess.Repository.IRepository;
 using DataAccess.Repository.IRepository.Blog;
+using DataAccess.Repository.IRepository.Comment;
 
 namespace DataAccess.Repository;
 
@@ -19,10 +21,12 @@ public class UnitOfWork : IUnitOfWork
     //Blog
     public IPosttRepository Post { get; private set; }
 
-    //Comment
+	//Comment
+	public IContactRepository Contact { get; private set; }
+	public ICommentRepository Comment { get; private set; }
 
-    //Reservation
-    public IRestaurantGroupRepository RestaurantGroup { get; private set; }
+	//Reservation
+	public IRestaurantGroupRepository RestaurantGroup { get; private set; }
     public ITableReservationRepository TableReservation { get; private set; }
     public ITableRepository Table { get; private set; }
 
@@ -43,10 +47,12 @@ public class UnitOfWork : IUnitOfWork
         //blog
         Post = new PosttRepository(_db);
 
-        //comment
+		//comment
+		Contact = new ContactRepository(_db);
+		Comment = new CommentRepository(_db);
 
-        //reservation
-        RestaurantGroup = new RestaurantGroupRepository(_db);
+		//reservation
+		RestaurantGroup = new RestaurantGroupRepository(_db);
         TableReservation = new TableReservationRepository(_db);
         Table = new TableRepository(_db);
 
