@@ -782,9 +782,6 @@ namespace DataAccess.Migrations
                     b.Property<DateTime>("ArrivalDateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DepartureDateTime")
-                        .HasColumnType("datetime2");
-
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
@@ -795,10 +792,6 @@ namespace DataAccess.Migrations
 
                     b.Property<int>("NumberOfPeople")
                         .HasColumnType("int");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TableId")
                         .HasColumnType("int");

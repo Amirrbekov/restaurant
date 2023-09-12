@@ -1,5 +1,4 @@
-﻿@model Models.ViewModels.ShopViewModel
-
+﻿@model TableReservation
 	<div class="theme_slider_1">
 		<div class="slider_slick">
 			<div class="item">
@@ -43,26 +42,27 @@
 					<h6 class="section_sub_title">Book a table in advance to enjoy your time with friends & Family</h6>
 				</div>
 				<div class="table_reserve_form">
-					<form class="reserve_form" action="https://wpthemebooster.com/demo/themeforest/html/hungrybuzz/dark/contact.php" method="post">
+					<form class="reserve_form" asp-action="Index" method="post">
+						@*<input type="hidden" asp-for="TableId" />*@
 						<div class="form-container">
 							<div class="form-group">
 								<label for="name">Your Name</label>
-								<input type="text" id="name" name="name" class="form-control" placeholder="Ex: John Doe" required="">
+								<input asp-for="Name" type="text" id="name" name="name" class="form-control" placeholder="Ex: John Doe" required="">
 							</div>
 							<div class="form-group">
 								<label for="number">No. of Person</label>
-								<input type="number" id="number" name="number" class="form-control" placeholder="No. of Person" value="" min="1" required="">
+								<input asp-for="NumberOfPeople" type="number" id="number" name="numberOfPeople" class="form-control" placeholder="No. of Person" value="" min="1" required="">
 							</div>
 							<div class="form-group">
 								<label for="date">Date</label>
-								<input type="date" id="date" name="date" class="form-control" required="">
+								<input asp-for="ArrivalDate" type="date" id="date" name="arrivalDateTime" class="form-control" required="">
 							</div>
 							<div class="form-group">
 								<label for="time">Time</label>
-								<input type="time" id="time" name="time" class="form-control" required="">
+								<input asp-for="ArrivalTime" type="time" id="time" name="arrivalDateTime" class="form-control" required="">
 							</div>
 							<div class="button_group">
-								<input class="button" type="submit" value="Reserve A Table" name="submit">
+								<button class="button" type="submit" name="submit">Reserve A Table</button>
 							</div>
 						</div>
 					</form>
@@ -198,27 +198,6 @@
 							</p>
 							<div class="button_group">
 								<a class="button" href="#">Learn More</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-
-		<div class="banner_1 bg_image_2 jarallax">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-7">
-						<div class="banner_content">
-							<img src="../assets/images/baking.png" alt="">
-							<h3>Special Baking Class  9.00am </h3>
-							<h6>
-								Famous Bakers from around the worls will take cooking workshop. Si its an opportunity for you
-								to join & learn culnery Arts. And make delicious food in your kitchen
-							</h6>
-							<div class="button_group">
-								<a class="button" href="#">Join Baking Class</a>
 							</div>
 						</div>
 					</div>
@@ -385,42 +364,6 @@
 				</div>
 			</div>
 		</div>
-
-		<div class="contact homestyle">
-			<div class="gmap_wrapper">
-				<div class="gmapbox">
-					<div id="googleMap" class="map"></div>
-					<div class="container">
-						<div class="row">
-							<div class="col-lg-6 col-md-6">
-								<div class="contact_us">
-									<div class="section_header">
-										<h2 class="section_title">Keep in Touch</h2>
-										<h6 class="section_sub_title">Send us mail if you have anything to suggest</h6>
-									</div>
-									<form class="contact_form" action="https://wpthemebooster.com/demo/themeforest/html/hungrybuzz/dark/contact.php" method="post">
-										<div class="form-container">
-											<div class="form-group">
-												<input type="text" name="name" class="form-control" placeholder="Your Name*" required="">
-											</div>
-											<div class="form-group">
-												<input type="email" name="email" class="form-control" placeholder="Your Email Address*" required="">
-											</div>
-											<div class="form-group">
-												<textarea name="message" class="form-control" placeholder="Message Here*" required=""></textarea>
-											</div>
-											<div class="form-group">
-												<input class="button" type="submit" value="Send" name="submit">
-											</div>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 		<div class="clients">
 			<div class="client_item">
 				<div class="client_imgbox">
@@ -453,5 +396,4 @@
 				</div>
 			</div>
 		</div>
-
-	 </div>
+</div>

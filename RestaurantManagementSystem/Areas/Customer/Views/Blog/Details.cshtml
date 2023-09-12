@@ -76,35 +76,36 @@
 						<div class="comments-area">
 							<h3 class="comments-title">Comments</h3>
 							<ul class="comment-list">
-								@foreach (var item in Model.CommentList)
+								@if (Model.CommentList.Count > 0)
+								{
+									@foreach (var item in Model.CommentList)
+									{
+										<li class="comment even thread-even depth-1">
+											<div class="commenter-block">
+												<div class="comment-content">
+													<div class="comment-author-name">@item.Name <span class="comment-reply"><a href="#" class="comment-reply-link">Reply <i class="ion-chevron-right"></i><i class="ion-chevron-right"></i></a></span></div>
+													<div class="comment-author-comment">
+														<p>@item.Message</p>
+													</div>
+													<time class="comment-date">@item.Created.ToShortDateString()</time>
+												</div>
+											</div>
+										</li>
+
+										<!-- #comment-## -->
+									}
+								}
+								else
 								{
 									<li class="comment even thread-even depth-1">
 										<div class="commenter-block">
 											<div class="comment-content">
-												<div class="comment-author-name">@item.Name <span class="comment-reply"><a href="#" class="comment-reply-link">Reply <i	class="ion-chevron-right"></i><i class="ion-chevron-right"></i></a></span></div>
 												<div class="comment-author-comment">
-													<p>@item.Message</p>
+													<p>No comments yet. Be the first to comment!</p>
 												</div>
-												<time class="comment-date">@item.Created.ToShortDateString()</time>
 											</div>
 										</div>
-										<ul class="children">
-												<li class="comment even thread-even depth-2">
-													<div class="commenter-block">
-														<div class="comment-avatar">
-															<img alt="img" src="../assets/images/blog/commenter2.png" class="avatar">
-														</div>
-														<div class="comment-content">
-															<div class="comment-author-name">Patricia Doe <span class="comment-reply"><a href="#" class="comment-reply-link" >Reply <i class="ion-chevron-right"></i><i class="ion-chevron-right"></i></a></span></div>
-															<div class="comment-author-comment">
-																<p>Lorem ipsum dolor sit amet, consectetur. Ut enim ad minima veniam quis nostrum exercitationem mosequatu autem.</p>
-															</div>
-															<time class="comment-date">August 29, 2022</time>
-														</div>
-													</div>
-												</li><!-- #comment-## -->
-											</ul><!-- .children -->
-									</li><!-- #comment-## -->
+									</li>
 								}
 							</ul>
 						</div>

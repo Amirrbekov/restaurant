@@ -2,6 +2,7 @@
 using DataAccess.Repository.IRepository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Models;
@@ -25,9 +26,43 @@ public class HomeController : Controller
     public IActionResult Index()
     {
         return View();
-    }
+	}
 
-    public IActionResult About()
+	[HttpPost]
+	public IActionResult Index(TableReservation reservation)
+	{
+		if (!ModelState.IsValid)
+		{
+			return View(reservation);
+		}
+
+
+		Table table = _unitOfWork.Table.Get(x => x.Seats == reservation.NumberOfPeople);
+
+		if (table == null)
+		{
+			ModelState.AddModelError("", "No available table with enough seats.");
+			return View(reservation);
+		}
+
+		TableReservation tableReservation = new()
+		{
+			TableId = table.Id,
+			Name = reservation.Name,
+			NumberOfPeople = reservation.NumberOfPeople,
+			Id = reservation.Id,
+			IsActive = true,
+			ArrivalDateTime = reservation.ArrivalDateTime,
+		};
+
+		_unitOfWork.TableReservation.Add(tableReservation);
+		_unitOfWork.Save();
+
+
+		return RedirectToAction("Index");
+	}
+
+	public IActionResult About()
     {
         return View();
     }

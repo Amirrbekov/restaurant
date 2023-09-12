@@ -1,13 +1,16 @@
 ﻿using DataAccess.Repository.IRepository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Models;
 using Models.Blog;
 using System.Security.Claims;
+using Utility;
 
 namespace RestaurantManagementSystem.Areas.Admin.Controllers;
 
 [Area("Admin")]
+[Authorize(Roles = SD.Role_Admin)]
 public class BlogController : Controller
 {
     private readonly IUnitOfWork _unitOfWork;

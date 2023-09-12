@@ -3,10 +3,12 @@ using DataAccess.Repository.IRepository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Utility;
 
 namespace RestaurantManagementSystem.Areas.Admin.Controllers;
 
-[Area("Admin"), Authorize]
+[Area("Admin")]
+[Authorize(Roles = SD.Role_Admin)]
 public class ContactController : Controller
 {
 	private readonly ApplicationDbContext _db;
