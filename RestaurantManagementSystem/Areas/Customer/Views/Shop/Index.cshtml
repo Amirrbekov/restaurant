@@ -31,7 +31,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="product_item">
                                 <div class="product_imagebox">
-                                    @if (product.ProductImages != null && product.ProductImages.Count() > 0)
+                                    @if (product.ProductImages != null)
                                     {
                                         <a asp-action="Details" asp-route-id="@product.ProductId"><img class="primary_img" src="@product.ProductImages.FirstOrDefault().ImageUrl" alt="img"></a>
                                     }
@@ -43,15 +43,6 @@
                                 </div>
                                 <div class="label_text">
                                     <h5 class="product_item_name"><a asp-action="Details" asp-route-id="@product.ProductId">@product.Name</a></h5>
-                                    <div class="rating">
-                                        <ul>
-                                            <li><i class="bi bi-star"></i></li>
-                                            <li><i class="bi bi-star"></i></li>
-                                            <li><i class="bi bi-star"></i></li>
-                                            <li><i class="bi bi-star"></i></li>
-                                            <li><i class="bi bi-star"></i></li>
-                                        </ul>
-                                    </div>
                                     <h6 class="product_item_price">@product.Price.ToString("c")</h6>
                                 </div>
                             </div>

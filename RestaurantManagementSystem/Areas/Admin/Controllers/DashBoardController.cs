@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using DataAccess.Repository.IRepository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Models.ViewModels;
 using Utility;
 
 namespace RestaurantManagementSystem.Areas.Admin.Controllers;
@@ -8,8 +10,25 @@ namespace RestaurantManagementSystem.Areas.Admin.Controllers;
 [Area("Admin")]
 public class DashBoardController : Controller
 {
-	public IActionResult Index()
+	private readonly IUnitOfWork _unitOfWork;
+
+    public DashBoardController(IUnitOfWork unitOfWork)
+    {
+        _unitOfWork = unitOfWork;
+    }
+
+    public IActionResult Index()
 	{
-		return View();
+        var result = _unitOfWork.OrderHeader.GetAll();
+        var totalTable = _unitOfWork.Table.GetAll();
+        var totalUser = _unitOfWork.ApplicationUser.GetAll();
+        DashboardVm vm = new DashboardVm()
+        {
+            TotalOrderCount = result.Count(),
+            TotalOrderPrice = result.Sum(x=>x.OrderTotal),
+            TotalTableCount = totalTable.Count(),
+            TotalUserCount = totalUser.Count(),
+        };
+		return View(vm);
 	}
 }

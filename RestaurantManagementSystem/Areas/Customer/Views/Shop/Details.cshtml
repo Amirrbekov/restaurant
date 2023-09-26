@@ -1,4 +1,4 @@
-﻿@model ShoppingCart 
+﻿@model ProductDetailViewModel
   
 <style>
     .rating-stars {
@@ -24,8 +24,6 @@
 </style>
 
 
-<form method="post">
-    <input hidden asp-for="ProductId" />
     <!-- Page Header -->
     <div class="page-header">
         <div class="page-header-content bg_image_header jarallax">
@@ -36,6 +34,8 @@
     </div>
     
     <div class="main-wrapper">
+        <form method="post">
+        <input hidden asp-for="ShoppingCart.ProductId" />
         <div class="product_view">
             <div class="container">
                 <div class="row">
@@ -45,17 +45,17 @@
                                 <div class="product_zoom_container">
                                     <div class="product_zoom_info selected">
                                         <div class="product_image_zoom">
-                                            @if (Model.Product.ProductImages != null && Model.Product.ProductImages.Count() > 0)
+                                            @if (Model.ShoppingCart.Product.ProductImages != null && Model.ShoppingCart.Product.ProductImages.Count() > 0)
                                             {
                                                 <div id="carouselExampleIndicators" class="carousel slide">
                                                     <div class="carousel-indicators">
-                                                        @foreach (var imageWithIndex in Model.Product.ProductImages.Select((image,index) => new { Image = image, Index = index }))
+                                                        @foreach (var imageWithIndex in Model.ShoppingCart.Product.ProductImages.Select((image, index) => new { Image = image, Index = index }))
                                                         {
                                                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="@imageWithIndex.Index" class="@(imageWithIndex.Index == 0? "active" : "")" aria-current="true" aria-label="Slide 1"></button>
                                                         }
                                                     </div>
                                                     <div class="carousel-inner">
-                                                        @foreach (var imageWithIndex in Model.Product.ProductImages.Select((image,index) => new { Image = image, Index = index }))
+                                                        @foreach (var imageWithIndex in Model.ShoppingCart.Product.ProductImages.Select((image, index) => new { Image = image, Index = index }))
                                                         {
                                                             <div class="@(imageWithIndex.Index == 0? "carousel-item active" : "carousel-item")">
                                                                 <img src="@imageWithIndex.Image.ImageUrl" class="d-block w-100" alt="...">
@@ -89,18 +89,43 @@
                     <div class="col-lg-6">
                         <div class="product_right">
                             <div class="product_info">
-                                <div class="product_title"><h4>@Model.Product.Name</h4></div>
+                                <div class="product_title"><h4>@Model.ShoppingCart.Product.Name</h4></div>
+                                @{
+                                    int defa = 0;
+                                    int count = 0;
+                                    if (Model.ProductCommentList.Count > 0)
+                                    {
+                                        foreach (var com in Model.ProductCommentList)
+                                        {
+                                            defa += com.Rating;
+                                            count++;
+                                        }
+                                        defa = defa / count;
+                                    }
+                                    int pust = 5 - defa;
+                                }
+
+                                <span class="text-warning">
+                                    @for (int i = 1; i <= defa; i++)
+                                    {
+                                        <i class="bi bi-star-fill"></i>
+                                    }
+                                    @for (int i = 1; i <= pust; i++)
+                                    {
+                                        <i class="bi bi-star"></i>
+                                    }
+                                </span>
                             </div>
                             <div class="product_price">
-                                <del>$105.00</del> <span class="product_per_price" data-content="95.00"></span> $<span class="product_total_price">95.00</span>
+                                <span class="product_total_price">@Model.ShoppingCart.Product.Price.ToString("c")</span>
                             </div>
                             <div class="product_description">
-                                @Html.Raw(Model.Product.Description)
+                                @Html.Raw(Model.ShoppingCart.Product.Description)
                             </div>
                             <div class="product_view_bottom">
                                 <div class="product_quantity">
                                     <div class="product_quantity_inner">
-                                        <input asp-for="Count" type="number" value="1">
+                                        <input asp-for="ShoppingCart.Count" type="number" value="1">
                                     </div>
                                 </div>
     
@@ -111,8 +136,8 @@
     
                             <div class="product_meta">
                                 <ul>
-                                    <li><span>SKU:</span> @Model.Product.SKU</li>
-                                    <li><span>Category:</span> @Model.Product.Category.Name</li>
+                                    <li><span>SKU:</span> @Model.ShoppingCart.Product.SKU</li>
+                                    <li><span>Category:</span> @Model.ShoppingCart.Product.Category.Name</li>
                                 </ul>
                             </div>
                             <div class="post_share">
@@ -128,6 +153,137 @@
                 </div>
             </div>
         </div>
-    </div>
-</form>
+        </form>
+        <div class="container">
+            <div class="single_tab section_sm">
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2">
+                        <ul class="single_tab_button_group">
+                            <li class="single_tab_button selected">
+                                <a class="selected" href="#">Make a Comment</a>
+                            </li>
+                            <li class="single_tab_button">
+                                <a href="#">Reviews</a>
+                            </li>
+                        </ul>
 
+                        <div class="single_tab_container">
+                            <div class="single_tab_info selected">
+                                <form class="comment-form" asp-controller="Shop" asp-action="MakeCommentRating" method="post">
+                                    <input type="hidden" asp-for="ShoppingCart.ProductId" name="productId" />
+                                    <p class="logged-in-as">Your email address will not be published. Required fields are marked *</p>
+                                    <div class="form-container">
+                                        <div class="row">
+                                            <div class="col-md-12 col-lg-12">
+                                                <div class="form-group">
+                                                    <textarea name="message" class="form-control" placeholder="Text Here*" asp-for="ProductComment.Message" required></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-lg-4">
+                                                <div class="form-group">
+                                                    <input type="text" name="name" class="form-control" placeholder="Name*" asp-for="ProductComment.Name" required />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-lg-4">
+                                                <div class="form-group">
+                                                    <input type="email" name="email" class="form-control" placeholder="E-mail*" asp-for="ProductComment.Email" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-lg-4">
+                                                <div class="form-group float-right">
+                                                    <span class="text-warning">
+                                                        <i class="ratingStart bi bi-star" data-value="1"></i>
+                                                        <i class="ratingStart bi bi-star" data-value="2"></i>
+                                                        <i class="ratingStart bi bi-star" data-value="3"></i>
+                                                        <i class="ratingStart bi bi-star" data-value="4"></i>
+                                                        <i class="ratingStart bi bi-star" data-value="5"></i>
+                                                    </span>
+
+                                                    <input type="hidden" name="rating" id="ratingsValue" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 col-lg-12">
+                                                <div class="button_group">
+                                                    <button class="button" type="submit" name="submit">Submit</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="single_tab_info">
+                                <div class="review_sec">
+                                    <ul class="review_area">
+                                    @if (Model.ProductCommentList.Count > 0)
+                                    {
+                                        <!-- First Review -->
+                                        @foreach (var com in Model.ProductCommentList)
+                                        {
+                                            <li class="blog_review_user">
+                                                <div class="reviewer_div">
+                                                    <div class="review_block">
+                                                        <div class="product_rating">
+                                                            @{
+                                                                var defaultStars = 5 - com.Rating;
+                                                            }
+
+                                                            <span class="text-warning">
+                                                                @for (int i = 1; i <= com.Rating; i++)
+                                                                {
+                                                                    <i class="bi bi-star-fill"></i>
+                                                                }
+                                                                @for (int i = 1; i <= defaultStars; i++)
+                                                                {
+                                                                    <i class="bi bi-star"></i>
+                                                                }
+                                                            </span>
+                                                        </div>
+                                                        <h4 class="reviewer_name">@com.Name <span class="review_date">@com.Created.ToShortDateString()</span></h4>
+                                                        <p class="reviewer_review">
+                                                            @com.Message
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <li class="blog_review_user">
+                                            <div class="reviewer_div">
+                                                <div class="review_block">
+                                                    <p class="reviewer_review">
+                                                        No comments yet. Be the first to comment!
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    }
+                                </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@section Scripts{
+    <script>
+        $(".ratingStart").hover(function () {
+            $(".ratingStart").addClass("bi bi-star").removeClass("bi bi-star-fill");
+
+            $(this).addClass("bi bi-star-fill").removeClass("bi bi-star");
+            $(this).prevAll(".ratingStart").addClass("bi bi-star-fill").removeClass("bi bi-star");
+        });
+
+        $(".ratingStart").click(function () {
+            var starValue = $(this).attr("data-value")
+            $("#ratingsValue").val(starValue)
+        });
+
+
+    </script>
+}

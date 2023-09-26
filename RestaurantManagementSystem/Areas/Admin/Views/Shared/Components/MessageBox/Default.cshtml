@@ -1,0 +1,29 @@
+﻿@using Models.Comment;
+@using RestaurantManagementSystem.ViewComponents;
+@model List<Contact>
+
+<!-- Dropdown - Messages -->
+<div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+     aria-labelledby="messagesDropdown">
+    <h6 class="dropdown-header">
+        Message Center
+    </h6>
+    @foreach (var contact in Model.OrderByDescending(x=>x.CreateDate).Take(3))
+    {
+        <a class="dropdown-item d-flex align-items-center" href="#">
+            <div class="dropdown-list-image mr-3">
+                <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
+                     alt="...">
+                <div class="status-indicator bg-success"></div>
+            </div>
+            <div>
+                <div class="text-truncate">
+                    @contact.Message
+                </div>
+                <div class="small text-gray-500">@contact.Name · @contact.CreateDate.ToShortDateString()</div>
+            </div>
+        </a>
+    }
+
+    <a class="dropdown-item text-center small text-gray-500" asp-controller="Contact" asp-action="Index">Read More Messages</a>
+</div>

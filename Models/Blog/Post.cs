@@ -20,6 +20,7 @@ public class Post
     [ValidateNever]
     [ForeignKey(nameof(ApplicationUserId))]
     public virtual ApplicationUser ApplicationUser { get; set; }
+    [ValidateNever]
 	public ICollection<Comments> Comments { get; set; }
 
 }

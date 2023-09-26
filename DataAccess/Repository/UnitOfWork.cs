@@ -24,6 +24,7 @@ public class UnitOfWork : IUnitOfWork
 	//Comment
 	public IContactRepository Contact { get; private set; }
 	public ICommentRepository Comment { get; private set; }
+	public IProductCommentRepository ProductComment { get; private set; }
 
 	//Reservation
 	public IRestaurantGroupRepository RestaurantGroup { get; private set; }
@@ -50,6 +51,7 @@ public class UnitOfWork : IUnitOfWork
 		//comment
 		Contact = new ContactRepository(_db);
 		Comment = new CommentRepository(_db);
+		ProductComment = new ProductCommentRepository(_db);
 
 		//reservation
 		RestaurantGroup = new RestaurantGroupRepository(_db);

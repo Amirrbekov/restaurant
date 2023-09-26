@@ -30,6 +30,7 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
 	//Comment
 	public DbSet<Contact> Contacts { get; set; }
 	public DbSet<Comments> Comments { get; set; }
+	public DbSet<ProductComment> ProductComments { get; set; }
 
 	//Reservation
 	public DbSet<RestaurantsGroup> RestaurantsGroups { get; set; }

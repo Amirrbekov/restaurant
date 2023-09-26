@@ -26,6 +26,7 @@ public interface IUnitOfWork
 	//Comment
 	IContactRepository Contact { get; }
 	ICommentRepository Comment { get; }
+	IProductCommentRepository ProductComment { get; }
 
 	//Reservation
 	IRestaurantGroupRepository RestaurantGroup { get; }
